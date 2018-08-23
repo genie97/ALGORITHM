@@ -5,7 +5,6 @@ int map[501][501];
 int dp[501][501];
 int dx[4] = { 1,-1,0,0 };
 int dy[4] = { 0,0,1,-1 };
-int ans = 0;
 
 int dfs(int y, int x) {
 	if (y == M - 1 && x == N - 1)
@@ -26,7 +25,6 @@ int dfs(int y, int x) {
 	return dp[y][x];
 }
 int main() {
-	int ans = 0;
 	scanf("%d %d", &M, &N);
 	for (int i = 0; i < M; i++) {
 		for (int j = 0; j < N; j++) {

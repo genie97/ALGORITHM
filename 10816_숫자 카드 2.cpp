@@ -1,7 +1,6 @@
 #include<cstdio>
 #include<algorithm>
 using namespace std;
-
 int N, M;
 int card[500000], card2[500000];
 int ans[500000];

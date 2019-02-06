@@ -14,16 +14,16 @@
 
 **set 사용하기**
 
-> - #include <set> 선언하기
+> - set 헤더 선언하기
 > - set < [Data Type] > [변수 이름] 으로 선언하기
 
 
 
 **set의 생성자와 연산자**
 
-> - set <Data type> set1 : 기본 선언
-> - set <Data type> set1 (pred) : pred를 통해 정렬기준을 세운다
-> - set <Data type> set2 (set1) : set1을 복사한 set2를 선언
+> - set <[Data type]> set1 : 기본 선언
+> - set <[Data type]> set1 (pred) : pred를 통해 정렬기준을 세운다
+> - set <[Data type]> set2 (set1) : set1을 복사한 set2를 선언
 > - "==", "!=", "<", ">", "<=", ">=" 의 연산자 사용이 가능하다
 
 

@@ -39,9 +39,8 @@ int main(void) {
 				if (digit[i] == "1") {
 					res += upper[i] + lower[i];
 				}
-				else{
+				else
 					res += upper[i] + lower[i] + digit[i];
-				}
 			}
 		}
 		cout << res << endl;

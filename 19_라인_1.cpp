@@ -1,4 +1,3 @@
-/*
 #include<iostream>
 #include<math.h>
 using namespace std;
@@ -28,4 +27,4 @@ int main(void) {
 	}
 	cout << min << endl;
 	return 0;
-}*/
+}

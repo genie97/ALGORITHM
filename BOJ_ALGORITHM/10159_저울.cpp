@@ -1,16 +1,3 @@
-/*9
-11
-2 1
-3 1
-2 8
-2 9
-7 8
-4 5
-6 7
-6 3
-1 7
-6 2
-1 9*/
 #include<cstdio>
 #include<algorithm>
 using namespace std;

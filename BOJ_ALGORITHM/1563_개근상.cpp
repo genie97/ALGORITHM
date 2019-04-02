@@ -1,5 +1,3 @@
-//지각 두번 결석 세번 연속//
-/*
 #include<cstdio>
 #include<cstring>
 int dp[1001][3][4];
@@ -20,4 +18,3 @@ int main() {
 	memset(dp, -1, sizeof(dp));
 	printf("%d\n", at(0, 0, 0));
 }
-*/

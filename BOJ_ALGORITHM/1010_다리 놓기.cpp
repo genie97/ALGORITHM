@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 int main() {
 	int dp[31];
@@ -13,4 +12,4 @@ int main() {
 		}
 		printf("%d\n", dp[M]);
 	}
-}*/
+}

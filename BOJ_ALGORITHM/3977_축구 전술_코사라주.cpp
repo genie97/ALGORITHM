@@ -1,15 +1,14 @@
-/*
 #include<cstdio>
 #include<algorithm>
 #include<vector>
 #include<stack>
 using namespace std;
-int SCCnum[100001]; // SCCÀÇ ÀÎµ¦½º ¹øÈ£
+int SCCnum[100001]; // SCCì˜ ì¸ë±ìŠ¤ ë²ˆí˜¸
 
 int N, M, visited[100001], indegree[100001], r = 0;
 vector<vector<int>> SCC;
-vector<vector<int>> vertex; //¼ø¹æÇâ
-vector<vector<int>> Rvertex; //¿ª¹æÇâ
+vector<vector<int>> vertex; //ìˆœë°©í–¥
+vector<vector<int>> Rvertex; //ì—­ë°©í–¥
 stack <int> s;
 
 void dfs(int v) {
@@ -96,4 +95,3 @@ int main() {
 		r = 0;
 	}
 }
-*/

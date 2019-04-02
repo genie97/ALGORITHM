@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<algorithm>
 #include<vector>
@@ -7,8 +6,8 @@ using namespace std;
 
 int V, E, visited[10001], r = 0;
 vector<vector<int>> SCC;
-vector<vector<int>> vertex; //¼ø¹æÇâ
-vector<vector<int>> Rvertex; //¿ª¹æÇâ
+vector<vector<int>> vertex; //Â¼Ã¸Â¹Ã¦Ã‡Ã¢
+vector<vector<int>> Rvertex; //Â¿ÂªÂ¹Ã¦Ã‡Ã¢
 stack <int> s;
 
 void dfs(int v) {
@@ -66,4 +65,3 @@ int main() {
 		printf("-1\n");
 	}
 }
-*/

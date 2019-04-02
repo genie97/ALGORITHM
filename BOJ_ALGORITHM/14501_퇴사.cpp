@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<algorithm>
 #include<utility>
@@ -15,7 +14,7 @@ int main() {
 	scanf("%d", &N);
 	for (int i = 1; i <= N; i++) {
 		int T, P;
-		scanf("%d%d", &T, &P);   // first: ��� �Ⱓ second: �ݾ�
+		scanf("%d%d", &T, &P);   // first: »ó´ã ±â°£ second: ±Ý¾×
 		day[i] = make_pair(T, P);
 		dp[i] = day[i].second;
 	}
@@ -35,5 +34,3 @@ int main() {
 	}
 	printf("%d\n", maxPrice);
 }
-*/
-

@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<algorithm>
 #include<vector>
@@ -32,4 +31,3 @@ int main() {
 		if (visited[i] == 2)
 			printf("%d\n", i);
 }
-*/

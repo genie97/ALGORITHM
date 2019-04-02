@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<algorithm>
 #include<utility>
@@ -45,4 +44,3 @@ int main() {
 	}
 	printf("%d\n", k);
 }
-*/

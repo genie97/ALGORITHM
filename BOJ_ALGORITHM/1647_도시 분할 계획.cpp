@@ -1,6 +1,5 @@
 #include<cstdio>
 #include<algorithm>
-#include<vector>
 using namespace std;
 int N, M;
 int parent[100002];

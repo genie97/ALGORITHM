@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<algorithm>
 using namespace std;
@@ -26,5 +25,4 @@ int main(){
 			left = mid + 1;
 	}
 	printf("%d\n", left);
-}*/
-
+}

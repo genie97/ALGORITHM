@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<algorithm>
 using namespace std;
@@ -45,4 +44,4 @@ int main() {
 	for (int i = 0; i < cnt; i++) {
 		printf("%d\n", apt[i]);
 	}
-}*/
+}

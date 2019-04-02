@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<vector>
 #include<string.h>
@@ -34,4 +33,3 @@ int main() {
 	}
 	printf("%d\n", res);
 }
-*/

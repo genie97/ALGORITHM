@@ -8,7 +8,7 @@ int main() {
 		if (a == 0)
 			cnt++;
 	}
-	if (cnt < N / 2)
+	if (cnt > N / 2)
 		printf("Junhee is not cute!\n");
 	else
 		printf("Junhee is cute!\n");

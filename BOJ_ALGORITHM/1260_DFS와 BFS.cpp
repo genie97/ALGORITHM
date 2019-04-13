@@ -47,5 +47,5 @@ int main() {
 	printf("\n");
 	fill(visit + 1, visit + 1 + N, 0);
 	bfs(V);
-	printf("\n");
+	//printf("\n");
 }

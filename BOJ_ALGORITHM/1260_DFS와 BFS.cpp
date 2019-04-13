@@ -20,7 +20,6 @@ void dfs(int v) {
 void bfs(int v) {
 	visit[v] = true;
 	q.push(v);
-
 	while (!q.empty()) {
 		int nv = q.front();
 		q.pop();

@@ -5,7 +5,6 @@ int T, N, cnt = 0;
 int main() {
 	scanf("%d", &T);
 	while (T--) {
-		int N;
 		int UM = 0, DM = 0, check = 0;
 		int block[101];
 		scanf("%d", &N);

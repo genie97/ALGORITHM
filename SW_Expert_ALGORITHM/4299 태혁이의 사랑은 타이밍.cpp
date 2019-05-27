@@ -1,9 +1,6 @@
 #include<cstdio>
 int T, D, H, M, cnt = 0;
-//오전 11일 11시 11분
-//14 23 59
-//11 11 11
-// 11 3 7
+//기준 오전 11일 11시 11분
 int main() {
 	scanf("%d", &T);
 	while (T--) {

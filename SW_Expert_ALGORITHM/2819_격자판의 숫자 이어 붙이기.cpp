@@ -31,7 +31,6 @@ int main() {
 	for (int tc = 0; tc < T; tc++) {
 		st.clear();
 		memset(map, 0, sizeof(map));
-		int x = 0, y = 0;
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				scanf("%1d", &map[i][j]);

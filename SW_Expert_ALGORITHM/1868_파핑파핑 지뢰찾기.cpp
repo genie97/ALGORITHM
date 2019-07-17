@@ -32,7 +32,7 @@ void bfs(int x, int y) {
 int main() {
 	scanf("%d", &T);
 	for (int tc = 0; tc < T; tc++) {
-		//�ʱ�ȭ
+		//초기화
 		memset(map, 0, sizeof(map));
 		vt.clear();
 		ans = 0;

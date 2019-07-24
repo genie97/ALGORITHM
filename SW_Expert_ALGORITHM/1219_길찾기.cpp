@@ -7,9 +7,8 @@ vector<int> vt[100];
 void dfs(int v) {
 	if (v == 99) 
 		res = 1;
-	for (int i = 0; i < vt[v].size(); i++) {
+	for (int i = 0; i < vt[v].size(); i++)
 		dfs(vt[v][i]);
-	}
 }
 int main() {
 	for (int tc = 0; tc < 10; tc++) {

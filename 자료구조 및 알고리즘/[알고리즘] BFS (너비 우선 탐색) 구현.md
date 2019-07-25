@@ -16,8 +16,8 @@ vector<int> a[8]; //노드를 저장하기 위한 vector 선언
 
 int main(){
     //...
-    // 전체 노드 저장 => a[index].push_back(item1);
-    // 시작 노드 큐에 삽입 => q.push(root_node); 
+    //전체 노드 저장 => a[index].push_back(item1);
+    //시작 노드 큐에 삽입 => q.push(root_node); 
     /**BFS 탐색**/
     while(!q.empty()){
         int x = q.front();

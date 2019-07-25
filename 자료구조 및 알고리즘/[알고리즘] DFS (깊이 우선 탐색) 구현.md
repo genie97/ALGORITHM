@@ -21,7 +21,7 @@ void DFS(int v){
 }
 int main(){
     //...
-    // 전체 노드 저장 => a[index].push_back(item1);
+    //전체 노드 저장 => a[index].push_back(item1);
     /**DFS 탐색**/
     DFS(vertex); //vertex: 시작 노드
     //...

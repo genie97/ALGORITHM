@@ -88,8 +88,8 @@ void dijkstra(int start){
             int nextDistance = distance + a[cur][i].second;
             if(nextDistance < d[next]){
                 d[next] = nextDistance;
-                // 큰 값이 먼저나오는 priority queue의 특징을 반영하여
-                // -nextDistance로 저장
+                //큰 값이 먼저나오는 priority queue의 특징을 반영하여
+                //-nextDistance로 저장
                 pq.push(make_pair(next, -nextDistance)); 
             }
         }

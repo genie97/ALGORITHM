@@ -20,7 +20,7 @@
 int dp[1001];
 int n;
 int main() {
-	//...
+    //...
     // scanf("%d", &n);
     /**DP**/
 	dp[1] = 1, dp[2] = 2;
@@ -28,7 +28,7 @@ int main() {
 		dp[i] = dp[i - 1] + dp[i - 2]; //점화식
 		dp[i] %= 10007;
 	}
-	//  printf("%d\n", dp[n]);
+    //  printf("%d\n", dp[n]);
     //...
 }
 ```

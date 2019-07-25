@@ -18,7 +18,7 @@ int main(){
     //...
     // 전체 노드 저장 => a[index].push_back(item1);
     // 시작 노드 큐에 삽입 => q.push(root_node); 
-    /*BFS 탐색*/
+    /**BFS 탐색**/
     while(!q.empty()){
         int x = q.front();
         q.pop();

@@ -6,7 +6,7 @@ int main() {
 		scanf("%d", &A[i]);
 	int j = 0;
 	for (int i = 0; i < N; i++) {
-		if (A[i] < 5) {
+		if (A[i] < X) {
 			ans[j] = A[i];
 			j++;
 		}

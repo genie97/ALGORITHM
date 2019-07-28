@@ -46,7 +46,7 @@ int main() {
 			}
 		}
 		printf("%d\n", cnt);
-		/*�ʱ�ȭ*/
+		/*초기화*/
 		queue<pair<int, int>> empty;
 		swap(q, empty);
 		memset(visit, 0, sizeof(visit));

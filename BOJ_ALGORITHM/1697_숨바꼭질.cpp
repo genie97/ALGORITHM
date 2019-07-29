@@ -6,10 +6,10 @@ int visit[100001];
 int main() {
 	scanf("%d%d", &N, &K);
 	queue<int> q;
-	int maxV = 0, cnt = 0;
+	int cnt = 0;
 	q.push(N);
 	visit[N] = 1;
-	while (1) {
+	while (!q.empty()) {
 		int size = q.size();
 		for (int i = 0; i < size; i++) {
 			int cur = q.front();

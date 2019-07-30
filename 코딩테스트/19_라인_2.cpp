@@ -1,6 +1,7 @@
 #include <iostream>
 #include<string>
 using namespace std;
+
 int main(void) {
 	string str, res;
 	string digit[100], upper[100], lower[100] = { "", };

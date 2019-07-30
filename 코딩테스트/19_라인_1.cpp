@@ -1,9 +1,11 @@
 #include<iostream>
 #include<math.h>
 using namespace std;
+
 bool isSquare(int n) {
 	return pow((pow((double)n, (double)0.5)), 2) == n;
 }
+
 int main(void) {
 	int N, w, h;
 	double min = 1e+13;

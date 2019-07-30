@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<vector>
 #include<algorithm>
@@ -35,5 +34,3 @@ int main() {
 	}
 	printf("%0.12lf", ans);
 }
-*/
-

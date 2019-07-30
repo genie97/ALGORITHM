@@ -1,4 +1,3 @@
-/*
 #include<cstdio>
 #include<vector>
 #include<algorithm>
@@ -51,4 +50,3 @@ int main() {
 		moneyA = 0, moneyB = 0;
 	}
 }
-*/

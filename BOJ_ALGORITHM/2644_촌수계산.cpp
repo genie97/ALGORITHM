@@ -19,23 +19,23 @@ int main() {
 	q.push(q1);
 	visit[q1] = 1;
 	while (!q.empty()) {
-		int start = q.front();
-		q.pop();
-		if (start == q2) {
-			printf("%d\n", cnt);
-			return 0;
-		}
-
-		for (int i = 0; i < family[start].size(); i++) {
-			int next = family[start][i];
-			if (!visit[next]) {
-				visit[next] = 1;
-				q.push(next);
-				cnt++;
+		int size = q.size();
+		for (int i = 0; i < size; i++) {
+			int start = q.front();
+			q.pop();
+			if (start == q2) {
+				printf("%d\n", cnt);
+				return 0;
 			}
-			else
-				cnt--;
+			for (int i = 0; i < family[start].size(); i++) {
+				int next = family[start][i];
+				if (!visit[next]) {
+					visit[next] = 1;
+					q.push(next);
+				}
+			}
 		}
+		cnt++;
 	}
 	printf("-1\n");
 }

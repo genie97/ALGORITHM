@@ -17,27 +17,25 @@ int main() {
 				dist[i][j] = INF;
 			}
 		}
-		priority_queue<pair<int, pair<int, int>>>pq;
-		dist[0][0] = 0;
-		pq.push({ -dist[0][0], { 0,0 } });
-		while (!pq.empty()) {
-			int cost = -pq.top().first;
-			int x = pq.top().second.first;
-			int y = pq.top().second.second;
-			pq.pop();
-			if (cost <= dist[x][y]) {
-				for (int i = 0; i < 4; i++) {
-					int nx = x + dx[i];
-					int ny = y + dy[i];
-					int w = map[nx][ny];
-					if (nx < 0 || nx >= N || ny < 0 || ny >= N) continue;
-					if (dist[nx][ny] > cost + w) {
-						dist[nx][ny] = cost + w;
-						pq.push({ -dist[nx][ny],{nx, ny} });
-					}
+		queue<pair<int, int>>q;
+		q.push({ 0,0 });
+		while (!q.empty()) {
+			int x = q.front().first;
+			int y = q.front().second;
+			int cost = dist[x][y];
+			q.pop();
+			for (int i = 0; i < 4; i++) {
+				int nx = x + dx[i];
+				int ny = y + dy[i];
+				int w = map[nx][ny];
+				if (nx < 0 || nx >= N || ny < 0 || ny >= N) continue;
+				if (dist[nx][ny] > cost + w) {
+					dist[nx][ny] = cost + w;
+					q.push({nx, ny});
 				}
 			}
 		}
-		printf("#%d %d\n", tc, dist[N-1][N-1]);
+
+		printf("#%d %d\n", tc, dist[N - 1][N - 1]);
 	}
 }

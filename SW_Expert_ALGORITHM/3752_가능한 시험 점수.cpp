@@ -1,7 +1,5 @@
 #include<cstdio>
 #include<algorithm>
-#include<cstring>
-#include<set>
 using namespace std;
 int T, N;
 int main() {

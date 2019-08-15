@@ -11,6 +11,7 @@ pl loc[1001];
 vector<pair<long long,pi>> island;
 void cal() {
 	int k = 0;
+	//노드 개수가 N개일 때, 연결 가능한 모든 간선 개수: N(N-1)/2
 	for (int i = 0; i < N; i++) {
 		for (int j = i+1; j < N; j++) {
 			long long dis = (long long)pow(loc[i].first - loc[j].first, 2) + (long long)pow(loc[i].second - loc[j].second, 2);
@@ -45,7 +46,7 @@ int main() {
 		for (int i = 0; i < N; i++)
 			scanf("%lld", &loc[i].second);
 		scanf("%lf", &E);
-		cal(); //�� ��尣�� �Ÿ�
+		cal(); //거리 계산
 		long long res = 0;
 		int link = 0;
 		for (int i = 0; i < island.size(); i++) {

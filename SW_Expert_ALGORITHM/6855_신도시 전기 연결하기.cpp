@@ -26,7 +26,7 @@ int main() {
 	}
 }
 
-/* MST·Î ±¸Çö(354ms)
+/* MSTêµ¬í˜„(354ms)
 #include<cstdio>
 #include<cstring>
 #include<algorithm>

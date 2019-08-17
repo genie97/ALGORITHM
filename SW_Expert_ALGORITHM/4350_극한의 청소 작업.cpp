@@ -18,8 +18,8 @@ int main() {
 	scanf("%d", &T);
 	for (int tc = 1; tc <= T; tc++) {
 		long long A, B;
-		char tempA[15], tempB[15]; //stringÀ¸·Î A,B ÀÓ½Ãº¯¼ö
-		int signA = 1, signB = 1; //ºÎÈ£
+		char tempA[15], tempB[15]; //string ìž„ì‹œ ë³€ìˆ˜
+		int signA = 1, signB = 1; //ë¶€í˜¸
 		scanf("%s %s", tempA, tempB);
 		int lenA = strlen(tempA);
 		int lenB = strlen(tempB);

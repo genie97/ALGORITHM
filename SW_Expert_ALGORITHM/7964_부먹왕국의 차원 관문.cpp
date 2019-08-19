@@ -1,4 +1,4 @@
-/*#include<cstdio>
+#include<cstdio>
 #include<cstring>
 using namespace std;
 int T, N, D;
@@ -19,4 +19,3 @@ int main() {
 		printf("#%d %d\n", tc, res);
 	}
 }
-*/

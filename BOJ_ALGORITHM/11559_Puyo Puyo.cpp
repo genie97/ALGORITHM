@@ -34,7 +34,7 @@ void dfs(int y, int x, char color) {
 	for (int i = 0; i < 4; i++) {
 		int ny = y + dy[i];
 		int nx = x + dx[i];
-		if (0 <= ny || ny < row || 0 <= nx || nx < col) {
+		if (0 <= ny && ny < row && 0 <= nx && nx < col) {
 			if (!visited[ny][nx] && board[ny][nx] == color) {
 				vt.push_back({ ny,nx });
 				visited[ny][nx] = 1;

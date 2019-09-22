@@ -54,7 +54,7 @@
 >
 >   set1.erase(start, end): [start, end)범위의 원소를 모두 제거
 >
-> - set1.find(k): 원소 kfmf 가리키는 반복자를 반환하고, 없다면 s.end()와 같은 반복자를 반환
+> - set1.find(k): 원소 k를 가리키는 반복자를 반환하고, 없다면 s.end()와 같은 반복자를 반환
 >
 > - set1.swap(set2): set1과 set2를 교환
 >

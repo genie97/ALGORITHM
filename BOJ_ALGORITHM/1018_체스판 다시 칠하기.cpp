@@ -33,17 +33,17 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		for (int j = 0; j < N; j++) {
 			if (i + 7 <= M-1 && j + 7 <= N-1) {
-				if (map[i][j] == 'B') { //¸¸¾à¿¡ B¸é È®ÀÎ
+				if (map[i][j] == 'B') { //ë§Œì•½ì— Bë©´ í™•ì¸
 					MIN = min(MIN, check_chess_B(i, j));
-					map[i][j] = 'W'; //BÀÎ°É W·Î ¹Ù±î¼­ È®ÀÎ
+					map[i][j] = 'W'; //Bì¸ê±¸ Wë¡œ ë°”ê¿”ì„œ í™•ì¸
 					MIN = min(MIN, check_chess_W(i, j) + 1);
-					map[i][j] = 'B'; //¿ø·¡´ë·Î º¯°æ
+					map[i][j] = 'B'; //ì›ëž˜ëŒ€ë¡œ ë³€ê²½
 				}
 				else {
 					MIN = min(MIN, check_chess_W(i, j));
-					map[i][j] = 'B'; //WÀÎ°É B·Î ¹Ù±î¼­ È®ÀÎ
+					map[i][j] = 'B'; //Wì¸ê±¸ Bë¡œ ë°”ê¿”ì„œ í™•ì¸
 					MIN = min(MIN, check_chess_B(i, j) + 1);
-					map[i][j] = 'W'; //¿ø·¡´ë·Î º¯°æ
+					map[i][j] = 'W'; //ì›ëž˜ëŒ€ë¡œ ë³€ê²½
 				}
 			}
 		}

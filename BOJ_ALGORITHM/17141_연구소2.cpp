@@ -9,18 +9,17 @@ typedef struct Pos {
 	int x, y;
 }Pos;
 
-vector<Pos> vt; //Á¶ÇÕ¿ë º¤ÅÍ
-vector<Pos> virus; //¹ÙÀÌ·¯½º °¡´É À§Ä¡ ³ÖÀ» °÷
+vector<Pos> vt; //ì¡°í•©ìš© ë²¡í„°
+vector<Pos> virus; //ë°”ì´ëŸ¬ìŠ¤ ê°€ëŠ¥ ìœ„ì¹˜ ë„£ì„ ê³³
 
-int check[11]; //Á¶ÇÕ¿ë Ã¼Å©
-int map[51][51]; //°íÁ¤ ¸Ê
-int temp[51][51]; //°¡º¯ ¸Ê=>¹ÙÀÌ·¯½º ³ÖÀ» °÷
-int N, M; //NÀº ¸ÊÅ©±â, MÀº ¹ÙÀÌ·¯½º °³¼ö
-int res = 987654321; //°á°ú°ª
-int space = 0; // 0ÀÎ°ø°£ °³¼ö
-int flag = 0; //¹ÙÀÌ·¯½º¸¦ ÀüÃ¼ ¸øÆÛ¶ß¸®´Â °æ¿ì 
+int check[11]; //ì¡°í•©ìš© ì²´í¬
+int map[51][51]; //ê³ ì • ë§µ
+int temp[51][51]; //ê°€ë³€ ë§µ=>ë°”ì´ëŸ¬ìŠ¤ ë„£ì„ ê³³
+int N, M; //Nì€ ë§µí¬ê¸°, Mì€ ë°”ì´ëŸ¬ìŠ¤ ê°œìˆ˜
+int res = 987654321; //ê²°ê³¼ê°’
+int space = 0; // 0ì¸ê³µê°„ ê°œìˆ˜(0ì¸ ê³µê°„ì´ ë‹¤ ì°¨ë©´ í¼ì§„ ì‹œê°„ ë¦¬í„´)
 
-//¿òÁ÷ÀÌ´Â ¹æÇâ
+//ì›€ì§ì´ëŠ” ë°©í–¥
 int dx[4] = { 0,0,1,-1 };
 int dy[4] = { 1,-1,0,0 };
 
@@ -38,8 +37,8 @@ void copy_map() {
 int bfs() {
 	queue<Pos> q;
 	int virus_num = M;
-	int spread_num = 0;
-	int spread_time = 0; //¹ÙÀÌ·¯½º ¹øÁö´Â ½Ã°£
+	int spread_num = 0; //ë°”ì´ëŸ¬ìŠ¤ ìƒê¸´ ê³µê°„ ê°œìˆ˜
+	int spread_time = 0; //ë°”ì´ëŸ¬ìŠ¤ ë²ˆì§€ëŠ” ì‹œê°„
 
 	for (int i = 0; i < N; i++) {
 		if (virus_num == 0) break;
@@ -52,7 +51,7 @@ int bfs() {
 	}
 	while (!q.empty()) {
 		int size = q.size();
-		if (spread_num == (space + virus.size()-M)) 
+		if (spread_num == (space + virus.size()-M)) // 0ì´ìˆëŠ” ê³µê°„ + (ë°”ì´ëŸ¬ìŠ¤ê°€ëŠ¥ ê³µê°„-ë°”ì´ëŸ¬ìŠ¤ ê°œìˆ˜) => ë‹¤í¼ì¡Œë‹¤
 			return spread_time;
 
 		for (int i = 0; i < size; i++) {
@@ -73,22 +72,22 @@ int bfs() {
 		}
 		spread_time++;
 	}
-	return 987654321;
+	return 987654321; // ë‹¤ í¼ì§€ì§€ ëª»í•œ ê²½ìš°
 }
 
 void make_comb(int idx, int cnt) {
 	if (cnt == M) {
-		copy_map(); //°¡º¯ ¸Ê¿¡ °íÁ¤ ¸Ê ÇÒ´çÇØÁÖ±â
-		//¹ÙÀÌ·¯½º ½É±â
+		copy_map(); //ê°€ë³€ ë§µì— ê³ ì • ë§µ í• ë‹¹í•´ì£¼ê¸°
+		//ë°”ì´ëŸ¬ìŠ¤ ì‹¬ê¸°
 		for (int i = 0; i < vt.size(); i++) {
 			int x = vt[i].x;
 			int y = vt[i].y;
 			temp[x][y] = 2;
 		}
-		int spread_ans= 0; //Ã³À½ 0À¸·Î ÃÊ±âÈ­ÇØ¼­ ½ÃÀÛ
-		//ÃÖ¼Ò°ª ±¸ÇÏ±â
+		int spread_ans= 0; //ì²˜ìŒ 0ìœ¼ë¡œ ì´ˆê¸°í™”í•´ì„œ ì‹œì‘
+		//ìµœì†Œê°’ êµ¬í•˜ê¸°
 		spread_ans = bfs();
-		res = min(res, spread_ans);
+		res = min(res, spread_ans); // ì—¬ê¸°ì„œ minê°’ ê°–ê¸°
 	
 		return;
 	}
@@ -103,7 +102,7 @@ void make_comb(int idx, int cnt) {
 }
 int main() {
 	scanf("%d%d", &N, &M);
-	//ÃÊ±âÈ­
+	//ì´ˆê¸°í™”
 	memset(map, 0, sizeof(map));
 	memset(temp, 0, sizeof(temp));
 	res = 987654321;
@@ -116,7 +115,7 @@ int main() {
 				virus.push_back(Pos{ i,j });
 			}
 			if (map[i][j] == 0)
-				space++; //ÃÑ ºó°ø°£
+				space++; //ì´ ë¹ˆê³µê°„
 		}
 	}
 	make_comb(0, 0);

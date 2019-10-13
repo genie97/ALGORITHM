@@ -8,12 +8,12 @@ typedef struct Pos {
 };
 
 int N, M;
-int res=987654321; //´ä
+int res=987654321; //ë‹µ
 int map[55][55], temp[55][55];
-int clean_space = 0; //¹ÙÀÌ·¯½º ¾ø´Â °ø°£
-int virus_check[11]; //Á¶ÇÕ¿ë Ã¼Å©
-vector<Pos> virus_pos; //¹ÙÀÌ·¯½º À§Ä¡ (È°¼º+ºñÈ°¼º)
-vector<Pos> vt; //Á¶ÇÕ¿ë º¤ÅÍ
+int clean_space = 0; //ë°”ì´ëŸ¬ìŠ¤ ì—†ëŠ” ê³µê°„
+int virus_check[11]; //ì¡°í•©ìš© ì²´í¬
+vector<Pos> virus_pos; //ë°”ì´ëŸ¬ìŠ¤ ìœ„ì¹˜ (í™œì„±+ë¹„í™œì„±)
+vector<Pos> vt; //ì¡°í•©ìš© ë²¡í„°
 int dx[4] = { 0,0,1,-1 }, dy[4] = { 1,-1,0,0 };
 
 void copy_map() {
@@ -29,11 +29,11 @@ int bfs() {
 	for (int i = 0; i < vt.size(); i++)
 		q.push(Pos{ vt[i].x,vt[i].y });
 	int size = 0;
-	int space = 0; //¹ÙÀÌ·¯½º ÆÛÁø °÷
-	int time = 0; //¹ÙÀÌ·¯½º ÆÛÁö´Â ½Ã°£
+	int space = 0; //ë°”ì´ëŸ¬ìŠ¤ í¼ì§„ ê³³
+	int time = 0; //ë°”ì´ëŸ¬ìŠ¤ í¼ì§€ëŠ” ì‹œê°„
 	
 	while (!q.empty()) {
-		if (space == clean_space) 
+		if (space == clean_space) //í¼ì§„ ê³µê°„ ê°œìˆ˜ë‘ ê¹¨ë—í–ˆë˜ ê³µê°„ ê°œìˆ˜ ê°™ìœ¼ë©´ ë‹¤ í¼ì§„ ê²ƒ!
 			return time;
 		size = q.size();
 		for (int i = 0; i < size; i++) {
@@ -44,9 +44,9 @@ int bfs() {
 				int nx = x + dx[j];
 				int ny = y + dy[j];
 				if (nx < 0 || nx >= N || ny < 0 || ny >= N) continue;
-				if (temp[nx][ny] == 0 || temp[nx][ny] == 2) {
-					if (temp[nx][ny] == 0) space++;
-					temp[nx][ny] = 3; //ÆÛÁø°÷
+				if (temp[nx][ny] == 0 || temp[nx][ny] == 2) { //2ì¸ ê²½ìš°ëŠ” í™œì„±í™” ì‹œì¼œì£¼ê¸°
+					if (temp[nx][ny] == 0) space++; //0ì¼ë•ŒëŠ” ê³µê°„ ëŠ˜ë¦¬ê¸°
+					temp[nx][ny] = 3; //í¼ì§„ê³³ 
 					q.push(Pos{ nx,ny });
 				}
 			}
@@ -61,7 +61,7 @@ void make_comb(int idx, int cnt) {
 		for (int i = 0; i < vt.size(); i++) {
 			int x = vt[i].x;
 			int y = vt[i].y;
-			temp[x][y] = 3;
+			temp[x][y] = 3; //í™œì„±ì‹œí‚¨ ë°”ì´ëŸ¬ìŠ¤ëŠ” 3ìœ¼ë¡œ ë°”ê¿”ì¤„ ê²ƒ
 		}
 		int spread_time = 0;
 		spread_time = bfs();
@@ -84,7 +84,7 @@ int main() {
 			scanf("%d", &map[i][j]);
 			if (map[i][j] == 2) 
 				virus_pos.push_back(Pos{ i,j });
-			if (map[i][j] == 0)
+			if (map[i][j] == 0) //ë‹¤ í¼ì§„ ê±° ì²´í¬í•˜ê¸° ìœ„í•´ ë°”ì´ëŸ¬ìŠ¤ ì—†ëŠ” 
 				clean_space++;
 		}
 	}

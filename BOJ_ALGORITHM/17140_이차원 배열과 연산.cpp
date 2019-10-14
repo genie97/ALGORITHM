@@ -108,3 +108,117 @@ int main() {
 	}
 	printf("%d", time);
 }
+
+/*
+#include<cstdio>
+#include<vector>
+#include<algorithm>
+#include<cstring>
+
+using namespace std;
+typedef struct array_cal {
+	int num;
+	int cnt;
+}ARRAY;
+
+int A[101][101] = { 0, }, temp_map[101][101] = { 0, };
+int row = 3, col = 3;
+int r, c, k;
+
+vector<ARRAY> vt;
+bool comp(ARRAY &a, ARRAY &b) {
+	if (a.cnt < b.cnt)
+		return true;
+	else if (a.cnt == b.cnt)
+		return a.num < b.num;
+	else
+		return false;
+}
+void copy_map(int(*a)[101], int(*b)[101]) {
+	for (int i = 1; i <= row; i++) {
+		for (int j = 1; j <= col; j++) {
+			a[i][j] = b[i][j];
+		}
+	}
+}
+void R() {
+	int row_size = 0;
+	for (int i = 1; i <= row; i++) {
+		vt.clear();
+		vt.resize(101); //벡터 사이즈 잡을 때, 크기 조심하기! + 고정 크기일 땐, 어레이 쓰는게 좋음!
+		for (int j = 1; j <= col; j++) {
+			if (A[i][j] == 0) continue;
+			vt[A[i][j]].num = A[i][j];
+			vt[A[i][j]].cnt++;
+		}
+		vector<ARRAY> temp;
+
+		for (int k = 0; k < vt.size(); k++) {
+			if (vt[k].num == 0 || vt[k].num == 0  ) continue;
+			temp.push_back(vt[k]);
+		}
+		sort(temp.begin(), temp.end(), comp);
+		row_size = max(row_size, (int)(temp.size()) * 2);
+		int size = 0;
+		for (int l = 1; l <= temp.size() * 2; l = l + 2) {
+			temp_map[i][l] = temp[size].num;
+			temp_map[i][l + 1] = temp[size].cnt;
+			size++;
+		}
+	}
+	col = row_size;
+	memset(A, 0, sizeof(A));
+	copy_map(A, temp_map);
+	memset(temp_map, 0, sizeof(temp_map));
+}
+void C() {
+	int col_size = 0;
+	for (int i = 1; i <= col; i++) {
+		vt.clear();
+		vt.resize(101);
+		for (int j = 1; j <= row; j++) {
+			if (A[j][i] == 0) continue;
+			vt[A[j][i]].num = A[j][i];
+			vt[A[j][i]].cnt++;
+		}
+		vector<ARRAY> temp;
+
+		for (int k = 0; k < vt.size(); k++) {
+			if (vt[k].cnt == 0) continue;
+			temp.push_back(vt[k]);
+		}
+		sort(temp.begin(), temp.end(), comp);
+		col_size = max(col_size, (int)(temp.size()) * 2);
+		int size = 0;
+		for (int l = 1; l <= temp.size() * 2; l = l + 2) {
+			temp_map[l][i] = temp[size].num;
+			temp_map[l + 1][i] = temp[size].cnt;
+			size++;
+		}
+	}
+	row = col_size;
+	memset(A, 0,sizeof(A));
+	copy_map(A, temp_map);
+	memset(temp_map, 0, sizeof(temp_map));
+}
+
+int main() {
+	int time = 0;
+	scanf("%d%d%d", &r, &c, &k);
+	for (int i = 1; i <= row; i++) {
+		for (int j = 1; j <= col; j++) {
+			scanf("%d", &A[i][j]);
+		}
+	}
+	while (A[r][c] != k) {
+		if (time > 100) {
+			printf("-1");
+			return 0;
+		}
+		else if (row >= col) R();
+		else if (row < col)C();
+		time++;
+	}
+	printf("%d", time);
+}
+*/

@@ -1,6 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
-public class SWEA2068{
+public class SWEA2068_D1_최대수구하기{
 	 public static void main(String[] args) {
 	        Scanner sc = new Scanner(System.in);
 	        int TC = sc.nextInt();

@@ -1,8 +1,8 @@
 /**
- * ´Ş¶óÁö´Â ºÎºĞÀ» Ã¼Å©ÇÒ °Í!
+ * ë‹¬ë¼ì§€ëŠ” ë¶€ë¶„ì„ ì²´í¬í•  ê²ƒ!
  * */
 import java.util.Scanner;
-public class SWEA1289{
+public class SWEA1289_D3_ì›ì¬ì˜ë©”ëª¨ë¦¬ë³µêµ¬í•˜ê¸°{
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int TC = sc.nextInt();

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class SWEA1204{
+public class SWEA1204_D2_최빈수구하기{
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int TC = sc.nextInt();

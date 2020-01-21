@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class SWEA5215{
+public class SWEA5215_D3_í–„ë²„ê±°ë‹¤ì´ì–´íŠ¸{
 	static int sum_score = 0;
 	static int sum_cal = 0;
 	static int max_score = 0;
@@ -7,11 +7,11 @@ public class SWEA5215{
 		Scanner sc = new Scanner(System.in);
 		int TC = sc.nextInt();
 		for (int testCase = 1; testCase <= TC; testCase++) {	
-			int N = sc.nextInt(); // Àç·á¼ö
-			int L = sc.nextInt(); // Á¦ÇÑ Ä®·Î¸®
+			int N = sc.nextInt(); // ì¬ë£Œìˆ˜
+			int L = sc.nextInt(); // ì œí•œ ì¹¼ë¡œë¦¬
 			
-			int[] score = new int[N]; // ¸ÀÁ¡¼ö
-			int[] cal = new int[N]; // Ä®·Î¸®
+			int[] score = new int[N]; // ë§›ì ìˆ˜
+			int[] cal = new int[N]; // ì¹¼ë¡œë¦¬
 			boolean[] visited = new boolean[N];
 			
 			for(int i=0;i<N;i++) {
@@ -31,21 +31,21 @@ public class SWEA5215{
 		}
 	}
 	/*
-	 * score: ¸À Á¡¼ö
-	 * cal: Ä®·Î¸® 
-	 * visited: ¹æ¹®Ã³¸®
-	 * start: ½ÃÀÛ ÀÎµ¦½º
-	 * n: Á¶ÇÕ ÃÖ´ë °³¼ö
-	 * r: ÇöÀç Á¶ÇÕ °³¼ö
+	 * score: ë§› ì ìˆ˜
+	 * cal: ì¹¼ë¡œë¦¬ 
+	 * visited: ë°©ë¬¸ì²˜ë¦¬
+	 * start: ì‹œì‘ ì¸ë±ìŠ¤
+	 * n: ì¡°í•© ìµœëŒ€ ê°œìˆ˜
+	 * r: í˜„ì¬ ì¡°í•© ê°œìˆ˜
 	 * */
 	private static void comb(int[] score, int[] cal, boolean[] visited, int start, int n, int r, int L) {
-		if(r==-1) { //index°¡ 0ÀÎ°ÅºÎÅÍ º¸·Á¸é -1ÀÏ ¶§, return ÇÒ °Í!
-			if(sum_cal <= L) { //Á¦ÇÑ Ä®·Î¸®º¸´Ù ÀÛÀ¸¸é
+		if(r==-1) { //indexê°€ 0ì¸ê±°ë¶€í„° ë³´ë ¤ë©´ -1ì¼ ë•Œ, return í•  ê²ƒ!
+			if(sum_cal <= L) { //ì œí•œ ì¹¼ë¡œë¦¬ë³´ë‹¤ ì‘ìœ¼ë©´
 				 if(max_score < sum_score) {
 					 max_score = sum_score;
 				}
 			}
-			return; //Á¶ÇÕ °³¼ö ¸¸Å­ÀÌ¸é return
+			return; //ì¡°í•© ê°œìˆ˜ ë§Œí¼ì´ë©´ return
 		}
 		else {
 			for(int i=start;i<n;i++) {

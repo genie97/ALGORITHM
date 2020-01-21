@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class SWEA3307{
+public class SWEA3307_D3_최장증가부분수열{
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		

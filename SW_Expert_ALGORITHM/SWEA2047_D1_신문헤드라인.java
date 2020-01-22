@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SWEA_2047_D1_½Å¹®Çìµå¶óÀÎ {
+public class SWEA_2047_D1_Â½Ã…Â¹Â®Ã‡Ã¬ÂµÃ¥Â¶Ã³Ã€ÃŽ {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String line = sc.next();

@@ -7,7 +7,6 @@ public class Main_562 {
 		for (int i = 0; i < 10; i++) {
 			arr[i] = sc.nextInt();
 		}
-		// Â¦¼öÇÕ È¦¼öÆò±Õ
 		int even_sum = 0;
 		int odd_sum = 0;
 		for (int i = 0; i < 10; i++) {

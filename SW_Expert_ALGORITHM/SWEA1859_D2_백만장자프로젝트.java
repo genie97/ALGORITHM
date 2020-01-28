@@ -7,7 +7,6 @@ public class SWEA1859_D2_백만장자프로젝트 {
 		for (int tc = 1; tc <= T; tc++) {
 			int N = sc.nextInt();
 			int [] sales = new int[N];
-			int [] dp = new int[N];
 			for (int i = 0; i < sales.length; i++) {
 				sales[i] = sc.nextInt();
 			}

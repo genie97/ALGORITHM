@@ -42,4 +42,42 @@ public class PR09_PowerSetTenSum {
 			}
 		}
 	}
+	/*
+		public static void makeTen(int idx, int cnt, int setNum) {
+		if (setNum == cnt) {
+
+//			부분 집합 전체 출력
+//			for (int i = 0; i < cnt; i++) {
+//				System.out.print(subset[i] + " ");
+//			}
+//			System.out.println();
+//			int sum = 0;
+//			for (int i = 0; i < cnt; i++) {
+//				sum+= subset[i];
+//			}
+			if (sum == 10) {
+				for (int i = 0; i < c.length; i++) {
+					if(c[i]) {
+						System.out.print(i+1 +" ");
+					}
+				}
+//				for (int i = 0; i < cnt; i++) {
+//					System.out.print(subset[i]+" ");
+//				}
+				System.out.println();
+			}
+		}else {
+			for (int i = idx; i < set.length; i++) {
+				if(c[i]) continue;
+				//subset[num++] = set[i];
+				sum+=set[i];
+				c[i] = true;
+				makeTen(i, cnt+1, setNum);
+				c[i] = false;
+				sum-=set[i];
+				//num--;
+			}
+		}
+	}
+	*/
 }

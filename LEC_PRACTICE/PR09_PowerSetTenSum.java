@@ -36,7 +36,8 @@ public class PR09_PowerSetTenSum {
 				if(c[i]) continue;
 				subset[num++] = set[i];
 				c[i] = true;
-				makeTen(i, cnt+1, setNum);
+				if (sum <= 10) // 최적화 시키는 코드
+					makeTen(i, cnt + 1, setNum);
 				c[i] = false;
 				num--;
 			}

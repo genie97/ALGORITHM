@@ -42,7 +42,7 @@ public class PR09_PowerSetTenSum {
 			}
 		}
 	}
-	/*
+/* sum변수를 더하고 빼는 식으로 확인하기
 		public static void makeTen(int idx, int cnt, int setNum) {
 		if (setNum == cnt) {
 
@@ -79,5 +79,5 @@ public class PR09_PowerSetTenSum {
 			}
 		}
 	}
-	*/
+*/
 }

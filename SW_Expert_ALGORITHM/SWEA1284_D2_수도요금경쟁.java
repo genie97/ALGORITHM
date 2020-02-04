@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class SWEA1284_D2_수도요금경쟁 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		// A회사 1리터당 P원의 돈
 		// B회사 기본 요금 Q원 월간 사용량이 R리터보다 많으면 R * S요금 더 냄
 		Scanner sc = new Scanner(System.in);

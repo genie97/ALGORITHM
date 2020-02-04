@@ -12,17 +12,14 @@ public class SWEA1948_D2_날짜계산기 {
 			int em = sc.nextInt();
 			int ed = sc.nextInt();
 
-			int sday = date[sm] - sd + 1; // 27
+			int sday = date[sm] - sd + 1; 
 			int daySum = sday;
 			for (int i = sm + 1; i < em; i++) {
-				daySum += date[i]; // 30 31
+				daySum += date[i]; 
 			}
 			if (sm != em)
 				daySum += ed;
 			System.out.println("#" + tc + " " + daySum);
-			// 27 30 31 (87
-			// 15
-
 		}
 	}
 }

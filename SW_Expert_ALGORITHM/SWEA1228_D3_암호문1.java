@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class SWEA_1228_D3_암호문1 {
+public class SWEA1228_D3_암호문1 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

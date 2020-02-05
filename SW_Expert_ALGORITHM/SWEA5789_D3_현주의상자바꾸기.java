@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SWEA579_D3_현주의상자바꾸기 {
+public class SWEA5789_D3_현주의상자바꾸기 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int T = sc.nextInt();

@@ -75,7 +75,7 @@ public class SWEA6808_D3_규영이와인영이의카드게임 {
 }
 
 
-/* 최적화 => 아이디어!
+/* 최적화 => 승패를 가르는 점수를 찾는다 / 순열의 개수는 지정된 값 : 9! 이므로 이기는 횟수만 찾아서 빼면 진 횟수까지 구하기 가능! 
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -89,7 +89,7 @@ public class SWEA6808_D3_규영이와인영이의카드게임 {
 		int T = sc.nextInt();
 		for (int tc = 1; tc <= T; tc++) {
 			DecA = new int[9]; // 규영이 카드패
-			DecB = new int[9]; // 인여이 카드패
+			DecB = new int[9]; // 인영이 카드패
 			boolean[] DecCheck = new boolean[19];
 			for (int i = 0; i < 9; i++) {
 				DecA[i] = sc.nextInt();

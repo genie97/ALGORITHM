@@ -88,3 +88,80 @@ public class BOJ1600_말이되고픈원숭이 {
 		return;
 	}
 }
+
+
+/* DFS: 시간초과
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+	private static class Point {
+		int x;
+		int y;
+
+		Point(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
+	private static int[][] map;
+	private static int W, H, K;
+	// 원숭이처럼
+	private static int[] dx = { -1, 1, 0, 0 }; // 0. 상 1. 하 2. 좌 3. 우
+	private static int[] dy = { 0, 0, -1, 1 };
+	// 말처럼
+	private static int[] hx = { -2, -2, -1, -1, 1, 1, 2, 2 };
+	private static int[] hy = { -1, 1, -2, 2, -2, 2, -1, 1 };
+
+	private static int minStep;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		K = sc.nextInt();
+		W = sc.nextInt();
+		H = sc.nextInt();
+
+		map = new int[H][W];
+
+		for (int i = 0; i < H; i++) {
+			for (int j = 0; j < W; j++) {
+				map[i][j] = sc.nextInt();
+			}
+		}
+		minStep = Integer.MAX_VALUE;
+		dfs(0, 0, 0, K); // x, y, step
+		if (minStep == Integer.MAX_VALUE)
+			System.out.println(-1);
+		else
+			System.out.println(minStep);
+	}
+
+	private static void dfs(int x, int y, int step, int k) {
+		if (x == H - 1 && y == W - 1) { // 도착지
+			if (minStep < step)
+				return;
+			minStep = step;
+		}
+		if (x < 0 || y < 0 || x >= H || y >= W)
+			return;
+		if (map[x][y] == 1)
+			return;
+		map[x][y] = 1;
+		for (int i = 0; i < 4; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
+			dfs(nx, ny, step + 1, k);
+		}
+		if (k > 0) {
+			for (int i = 0; i < 8; i++) {
+				int nx = x + hx[i];
+				int ny = y + hy[i];
+				dfs(nx, ny, step + 1, k-1);
+			}
+		}
+		map[x][y] = 0;
+	}
+}
+*/

@@ -24,8 +24,11 @@ public class SWEA1231_D4_중위순회 {
 		if (idx >= tree.length || tree[idx] == null) {
 			return;
 		}
+		// 왼쪽
 		inorder(idx * 2);
+		// 부모
 		System.out.print(tree[idx]);
+		// 오른쪽
 		inorder(idx * 2 + 1);
 	}
 }

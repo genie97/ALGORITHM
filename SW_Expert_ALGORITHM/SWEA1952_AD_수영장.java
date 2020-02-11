@@ -14,7 +14,7 @@ public class SWEA1952_AD_수영장 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int TC = Integer.parseInt(st.nextToken());
-		;
+
 		for (int tc = 1; tc <= TC; tc++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			fee = new int[4];

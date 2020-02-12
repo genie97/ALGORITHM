@@ -1,0 +1,108 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+ 
+public class SWEA1258_D4_행렬찾기{
+    public static class Point {
+        int x, y;
+ 
+        Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+ 
+    public static int[][] map;
+    public static boolean[][] visit;
+    public static int N;
+    public static ArrayList<Point> list;
+ 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int TC = sc.nextInt();
+        for (int tc = 1; tc <= TC; tc++) {
+            N = sc.nextInt();
+            map = new int[N][N];
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    map[i][j] = sc.nextInt();
+                }
+            }
+            list = new ArrayList<>();
+            visit = new boolean[N][N];
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    if (map[i][j] != 0 && !visit[i][j]) {
+                        findChemi(i, j);
+                    }
+                }
+            }
+            for (int i = 0; i < list.size(); i++) {
+                for (int j = i + 1; j < list.size(); j++) {
+                    int mul1 = list.get(i).x * list.get(i).y;
+                    int mul2 = list.get(j).x * list.get(j).y;
+                    if (mul1 >= mul2) {
+                        if (mul1 == mul2) {
+                            if (list.get(i).x > list.get(j).x) {
+                                int tmp_x = list.get(i).x;
+                                int tmp_y = list.get(i).y;
+                                // i자리에 j
+                                list.get(i).x = list.get(j).x;
+                                list.get(i).y = list.get(j).y;
+                                // j자리에 i
+                                list.get(j).x = tmp_x;
+                                list.get(j).y = tmp_y;
+                            }
+                        } else {
+                            int tmp_x = list.get(i).x;
+                            int tmp_y = list.get(i).y;
+                            // i자리에 j
+                            list.get(i).x = list.get(j).x;
+                            list.get(i).y = list.get(j).y;
+                            // j자리에 i
+                            list.get(j).x = tmp_x;
+                            list.get(j).y = tmp_y;
+                        }
+                    }
+                }
+            }
+     
+            System.out.print("#" + tc + " ");
+            System.out.print(list.size() + " ");
+            for (int i = 0; i < list.size(); i++) {
+                System.out.print(list.get(i).x + " " + list.get(i).y + " ");
+            }
+            System.out.println();       
+        }
+    }
+ 
+    public static void findChemi(int i, int j) {
+        int garo = 0;
+        int sero = 0;
+        while (true) {
+            if (j + garo >= N)
+                break;
+            if (map[i][j + garo] == 0)
+                break;
+            garo++;
+        }
+ 
+        while (true) {
+            if (i + sero >= N)
+                break;
+            if (map[i + sero][j] == 0)
+                break;
+            sero++;
+        }
+        // 방문 체크 다해주기
+        for (int r = i; r < i + sero; r++) {
+            for (int c = j; c < j + garo; c++) {
+                visit[r][c] = true;
+            }
+        }
+        list.add(new Point(sero, garo));
+    }
+}

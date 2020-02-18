@@ -13,7 +13,7 @@
 
   
 
-- 구현 코드
+- 구현
 
   ```java
   import java.util.ArrayList;

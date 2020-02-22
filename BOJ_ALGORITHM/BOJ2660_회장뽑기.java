@@ -12,11 +12,13 @@ public class BOJ2660_회장뽑기 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
 		int[][] map = new int[N + 1][N + 1];
+
 		for (int i = 1; i < map.length; i++) {
 			for (int j = 1; j < map.length; j++) {
 				map[i][j] = INF;
 			}
 		}
+
 		StringTokenizer st;
 		while (true) {
 			st = new StringTokenizer(br.readLine(), " ");
@@ -37,6 +39,7 @@ public class BOJ2660_회장뽑기 {
 				}
 			}
 		}
+
 		int[] friendShip = new int[N + 1];
 		int relation = Integer.MAX_VALUE;
 		for (int i = 1; i < map.length; i++) {

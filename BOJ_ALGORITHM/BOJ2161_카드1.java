@@ -7,17 +7,17 @@ public class BOJ2161_카드1 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		ArrayList<Integer> stack = new ArrayList<Integer>();
+		Queue<Integer> q = new LinkedList<Integer>();
 		for (int i = 1; i <= N; i++) {
-			stack.add(i);
+			q.add(i);
 		}
-		while (!stack.isEmpty()) {
-			int pop_item = stack.remove(0);
+		while (!q.isEmpty()) {
+			int pop_item = q.poll();
 			System.out.print(pop_item + " ");
-			if (stack.size() == 0)
+			if (q.size() == 0)
 				break;
-			int back_item = stack.remove(0);
-			stack.add(back_item);
+			int back_item = q.poll();
+			q.add(back_item);
 		}
 	}
 }

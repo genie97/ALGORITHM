@@ -2,6 +2,7 @@
 #include<algorithm>
 using namespace std;
 int N, a[1001], dp[1001];
+
 int main() {
 	scanf("%d", &N);
 	for (int i = 0; i < N; i++) {

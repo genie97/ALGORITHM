@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 public class BOJ2758_로또 {
 
 	public static long[][] dp;
-	public static long ans;
 	public static int N;
 	public static int M;
 
@@ -18,7 +17,6 @@ public class BOJ2758_로또 {
 			N = Integer.parseInt(st.nextToken());
 			M = Integer.parseInt(st.nextToken());
 
-			ans = 0;
 			dp = new long[N + 1][M + 1]; // M개 중 N개 뽑기
 			dp[1][1] = 1;
 

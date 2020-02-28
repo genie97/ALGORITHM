@@ -50,10 +50,11 @@ public class SWEA2115_AD_벌꿀채취 {
 					if (y2 + (M - 1) >= N)
 						continue;
 //					System.out.println("[" + x1 + ", " + y1 + "]" + "[" + x2 + ", " + y2 + "]");
-					int value = maxBenefit(x1, y1, x2, y2);
+					powS = 0;
+					maxBenefit(x1, y1, x2, y2);
 //					System.out.println(value);
-					if (value > benefit) {
-						benefit = value;
+					if (powS > benefit) {
+						benefit = powS;
 					}
 				}
 			}
@@ -61,21 +62,9 @@ public class SWEA2115_AD_벌꿀채취 {
 		}
 	}
 
-	public static int maxBenefit(int x1, int y1, int x2, int y2) {
-		// 일꾼 1 -> 일꾼 2
-		powS = 0;
+	public static void maxBenefit(int x1, int y1, int x2, int y2) {
 		getHoney(x1, y1, 0, 0, powS); // 위치 / cnt / sum /powSum
 		getHoney(x2, y2, 0, 0, powS);
-		int b1 = powS;
-
-		// 일꾼 2 -> 일꾼 1
-		powS = 0;
-		getHoney(x2, y2, 0, 0, powS); // 위치 / cnt / sum /powSum
-		getHoney(x1, y1, 0, 0, powS);
-		int b2 = powS;
-
-		return Math.max(b1, b2);
-
 	}
 
 	public static void getHoney(int x, int y, int cnt, int sum, int powSum) {

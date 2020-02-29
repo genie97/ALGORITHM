@@ -12,7 +12,7 @@ public class BOJ14502_연구소 {
 	public static int[][] map;
 	public static int[][] copyMap;
 	public static ArrayList<int[]> virus; // 바이러스 위치 담을 어레이리스트
-	public static ArrayList<int[]> empty;
+	public static ArrayList<int[]> empty; // 벽을 세울 수 있는 위치 담을 어레이
 	public static int ans;
 
 	public static int[] dx = { -1, 1, 0, 0 };
@@ -44,13 +44,13 @@ public class BOJ14502_연구소 {
 			}
 		}
 		ans = Integer.MIN_VALUE;
-		makeWall(0, 0, safeCnt); // 벽을 세운다 (바이러스 담긴 큐를 넘겨줘서 기존 바이러스는 변동없게 하기)
+		makeWall(0, 0, safeCnt); // 벽을 세운다(벽조합을 위한 cnt, idx / 바이러스가 퍼지기 전 안전구역개수)
 		System.out.println(ans);
 	}
 
 	public static void makeWall(int cnt, int idx, int safeCnt) {
 		if (cnt == 3) { // 벽을 다세웠다 바이러스를 퍼뜨리자! -> 안전구역 넓이 구하기 -> 최댓값!
-			init(); // 벽세우 상태로 copyMap을 쓰기 (바이러스 퍼뜨리기 위해서)
+			init(); // 벽세운 상태로 copyMap을 쓰기 (바이러스 퍼뜨리기 위해서)
 			int safe = spreadVirus(safeCnt - 3 + virus.size()); // 바이러스 퍼뜨리기 (벽세운곳 제거) (기존 바이러스개수는 더해서 보내주기 나중에 뺄것!)
 			if (ans >= safe)
 				return; // 영역이 최대보다 작으면 그냥 바로 리턴
@@ -92,7 +92,7 @@ public class BOJ14502_연구소 {
 				for (int i = 0; i < 4; i++) {
 					int nx = x + dx[i];
 					int ny = y + dy[i];
-					if (nx < 0 || ny < 0 || nx >= N || ny >= M) // 벽이어도 이동불가
+					if (nx < 0 || ny < 0 || nx >= N || ny >= M) 
 						continue;
 					if (copyMap[nx][ny] == 1 || copyMap[nx][ny] == 2) // 벽이거나 기존에 바이러스가 있는 공간인 경우 제외
 						continue;

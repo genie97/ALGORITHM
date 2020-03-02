@@ -21,7 +21,7 @@ public class BOJ1963_소수경로 {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			int num1 = Integer.parseInt(st.nextToken());
 			int num2 = Integer.parseInt(st.nextToken());
-			if (num1 == num2) {
+			if (num1 == num2) { // 같은 수면 확인할 필요 없음 (조건자체가 무조건 소수인 두 수가 한쌍!)
 				sb.append(0).append("\n");
 				continue;
 			} else {
@@ -55,7 +55,7 @@ public class BOJ1963_소수경로 {
 					if (prime[nextNum] && !visit[nextNum]) {
 						visit[nextNum] = true;
 						q.add(nextNum);
-						memo[nextNum] = memo[curNum] + 1;
+						memo[nextNum] = memo[curNum] + 1; // 현재 수에 + 1 (경로 memozation)
 					}
 				}
 			}
@@ -81,7 +81,7 @@ public class BOJ1963_소수경로 {
 		return cn;
 	}
 
-	// 소수 미리 구해놓기
+	// 소수 미리 구해놓기 - 에라토스테네스의 체
 	public static void eratos() {
 		for (int i = 2; i < 9999; i++) {
 			prime[i] = true;

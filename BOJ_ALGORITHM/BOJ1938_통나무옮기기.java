@@ -38,20 +38,20 @@ public class BOJ1938_통나무옮기기 {
 				} else {
 					map[i][j] = str.charAt(j) - 'A' + 1;
 					if (map[i][j] == 2) {
-						if (src == null) {
+						if (src == null) { // 첫 시작 좌표만 저장 (첫좌표에서는 방향이 미정이므로 -1)
 							src = new Point(i, j, -1);
 						} else {
-							if (src.x == i) {
+							if (src.x == i) { // 통나무의 방향 저장
 								src.dir = 0;
 							} else {
 								src.dir = 1;
 							}
 						}
-					} else if (map[i][j] == 5) {
+					} else if (map[i][j] == 5) { // 첫 시작 좌표만 저장 (첫좌표에서는 방향이 미정이므로 -1)
 						if (dest == null) {
 							dest = new Point(i, j, -1);
 						} else {
-							if (dest.x == i) {
+							if (dest.x == i) { // 통나무의 방향 저장
 								dest.dir = 0;
 							} else {
 								dest.dir = 1;
@@ -67,7 +67,7 @@ public class BOJ1938_통나무옮기기 {
 
 	public static int bfs() {
 		Queue<int[]> q = new LinkedList<int[]>();
-		q.add(new int[] { src.x, src.y, src.dir, 0 }); // 통나무의 맨 위 x,y , 가로인지(0) 세로인지(1) , 최소 이동 횟수
+		q.add(new int[] { src.x, src.y, src.dir, 0 }); // 통나무의 시작 좌표 x,y , 가로인지(0) 세로인지(1) , 최소 이동 횟수
 		visit[src.x][src.y][src.dir] = true;
 
 		while (!q.isEmpty()) {
@@ -76,13 +76,13 @@ public class BOJ1938_통나무옮기기 {
 			int dir = q.peek()[2];
 			int cnt = q.peek()[3];
 			q.poll(); // 큐 빼기
-			if (tx == dest.x && ty == dest.y && dir == dest.dir) {
+			if (tx == dest.x && ty == dest.y && dir == dest.dir) { // 시작좌표가 동일하고 방향이 같다면 도착한 것
 				return cnt;
 			}
 			int nx = 0, ny = 0, nDir = 0;
 			for (int i = 0; i < 5; i++) {
 				if (i == 4) { // 방향 회전
-					// 중심축
+					// 중심축 초기화
 					int mx = tx;
 					int my = ty;
 					nDir = dir;
@@ -95,13 +95,13 @@ public class BOJ1938_통나무옮기기 {
 					}
 
 					// 중심축을 기준으로 회전가능한지 확인
-					if (!doTurn(mx, my)) // 3*3이 범위를 넘거나 , 3*3에 나무가 있거나!
+					if (!doTurn(mx, my)) // 회전을 하는데 범위를 넘거나 , 3*3에 나무가 있거나!
 						continue;
-					nDir ^= 1; // 방향 변경됨
+					nDir ^= 1; // 방향 변경
 					if (nDir == 0) { // 가로로 변경됨
 						nx = mx;
 						ny = my - 1;
-					} else {
+					} else { // 세로로 변경됨
 						nx = mx - 1;
 						ny = my;
 					}
@@ -110,10 +110,10 @@ public class BOJ1938_통나무옮기기 {
 					nx = tx + dx[i];
 					ny = ty + dy[i];
 					nDir = dir;
-					if (!doMove(nx, ny, dir)) // 이동하는 위치에 1이 있는지 확인
+					if (!doMove(nx, ny, dir)) // 이동하는 위치에 1이 있는지 , 범위는 넘지 않는지 체크
 						continue;
 				}
-				if (visit[nx][ny][nDir])
+				if (visit[nx][ny][nDir]) // 해당 도착지를 어떤 방향을 가지고 방문했는지 체크
 					continue;
 				visit[nx][ny][nDir] = true;
 				q.add(new int[] { nx, ny, nDir, cnt + 1 });
@@ -128,7 +128,7 @@ public class BOJ1938_통나무옮기기 {
 				return false;
 			if (map[x][y] == 1 || map[x][y + 1] == 1 || map[x][y + 2] == 1) // 가로 세칸 중 하나라도 1이면 나무가 있어서 불가
 				return false;
-		} else {
+		} else { // 세로인 경우
 			if (x < 0 || y < 0 || x >= N || y >= N || x + 2 >= N)
 				return false;
 			if (map[x][y] == 1 || map[x + 1][y] == 1 || map[x + 2][y] == 1) // 세로 세칸 중 하나라도 1이면 나무가 있어서 불가
@@ -148,5 +148,4 @@ public class BOJ1938_통나무옮기기 {
 		}
 		return true;
 	}
-
 }

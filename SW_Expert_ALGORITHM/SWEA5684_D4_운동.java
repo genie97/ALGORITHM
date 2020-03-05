@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class SWEA5684_D4_운동 {

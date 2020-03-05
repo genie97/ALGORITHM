@@ -48,3 +48,56 @@ public class SWEA5684_D4_운동 {
 		}
 	}
 }
+/** floyd warshall (구현하면서 주의 사항 i~i를 가는 최소 비용을 찾아야함 i->j j->i 이런식의 접근은 일부 테스트케이스 오류
+import java.util.Scanner;
+
+public class SWEA5684_D4_운동 {
+	public static int[][] adj;
+	public static long ans;
+	public static int N;
+	public static int M;
+	public static final int INF = 987654321;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		M = sc.nextInt();
+		adj = new int[N + 1][N + 1];
+
+		// 모든 정점에 대해 INF로 초기화
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= N; j++) {
+				adj[i][j] = INF;
+			}
+		}
+
+		for (int i = 0; i < M; i++) {
+			int s = sc.nextInt();
+			int e = sc.nextInt();
+			int c = sc.nextInt();
+			adj[s][e] = c;
+		}
+		floyd();
+		// 플로이드 워샬
+		ans = INF;
+		for (int i = 1; i <= N; i++) {
+			ans = Math.min(ans, adj[i][i]);
+		}
+		System.out.println(ans == INF ? -1 : ans);
+
+	}
+
+	public static void floyd() {
+		for (int k = 1; k <= N; k++) {
+			for (int i = 1; i <= N; i++) {
+				for (int j = 1; j <= N; j++) {
+					if (adj[i][j] > adj[i][k] + adj[k][j]) {
+						adj[i][j] = Math.min(adj[i][j], adj[i][k] + adj[k][j]);
+					}
+				}
+			}
+		}
+
+	}
+}
+*/

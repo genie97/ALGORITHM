@@ -65,6 +65,8 @@ public class BOJ2146_다리만들기 {
 				int x = data[0];
 				int y = data[1];
 				int cnt = data[2];
+				if (cnt >= ans) // 이미 거리가 답보다 큰 경우
+					return;
 				for (int i = 0; i < 4; i++) {
 					int nx = x + dx[i];
 					int ny = y + dy[i];

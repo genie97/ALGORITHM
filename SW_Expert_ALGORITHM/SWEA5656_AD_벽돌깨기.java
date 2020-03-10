@@ -1,3 +1,145 @@
+/* 239ms */
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class SWEA5656_AD_벽돌깨기 {
+
+	public static int N;
+	public static int W;
+	public static int H;
+	public static int[][] map, copyMap;
+	public static boolean[][] visit;
+	public static int[] shooting;
+	public static int res, bCnt, cnt;
+	public static int[] dx = { -1, 1, 0, 0 };
+	public static int[] dy = { 0, 0, -1, 1 };
+	public static int initCount;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		int T = Integer.parseInt(br.readLine());
+		for (int tc = 1; tc <= T; tc++) {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			N = Integer.parseInt(st.nextToken());
+			W = Integer.parseInt(st.nextToken());
+			H = Integer.parseInt(st.nextToken());
+			map = new int[H][W];
+			copyMap = new int[H][W];
+			initCount = 0;
+			for (int i = 0; i < H; i++) {
+				String str = br.readLine();
+				for (int j = 0, idx = 0; j < W; j++, idx += 2) {
+					map[i][j] = str.charAt(idx) - '0';
+					// 벽돌 개수 세기
+					if (map[i][j] > 0)
+						initCount++;
+				}
+			}
+			visit = new boolean[H][W];
+			shooting = new int[N];
+			// W개의 row에서 N개의 쏠 곳 을 선택한다
+			bCnt = 0; // 깨진 벽돌 개수 세기
+			dfs(0); // 순열
+			bCnt = initCount - bCnt;
+			sb.append("#").append(tc).append(" ").append(bCnt).append("\n");
+		}
+		System.out.println(sb);
+	}
+
+	public static void dfs(int idx) {
+		if (bCnt == initCount)
+			return;
+		if (idx == N) {
+			// 맵 복사해서 쓰기
+			copy();
+			shootMarble();
+			return;
+		}
+		// 쏘는 곳 순서
+		for (int i = 0; i < W; i++) {
+			shooting[idx] = i;
+			dfs(idx + 1);
+		}
+	}
+
+	public static void shootMarble() {
+		cnt = 0; // 총 몇개가 깨졌는지 세기
+		for (int i = 0; i < shooting.length; i++) {
+			// 제일 위에 있는 좌표 꺼내기
+			int y = shooting[i];
+			for (int x = 0; x < copyMap.length; x++) {
+				if (copyMap[x][y] > 1) {
+					breaking(x, y, copyMap[x][y] - 1);
+					break;
+				} else if (copyMap[x][y] == 1) { // 1이면 연쇄 반응 없음
+					copyMap[x][y] = 0;
+					cnt++;
+					break;
+				}
+			}
+			// 벽돌 내리기
+			downBlock();
+		}
+		if (bCnt < cnt)
+			bCnt = cnt;
+	}
+
+	public static void breaking(int x, int y, int dis) {
+		copyMap[x][y] = 0; // 깨기
+		cnt++;
+		for (int dir = 0; dir < 4; dir++) {
+			for (int d = 1; d <= dis; d++) {
+				int nx = x + (dx[dir] * d);
+				int ny = y + (dy[dir] * d);
+				if (isIn(nx, ny)) {
+					if (copyMap[nx][ny] > 1) {
+						breaking(nx, ny, copyMap[nx][ny] - 1);
+					} else if (copyMap[nx][ny] == 1) {
+						copyMap[nx][ny] = 0;
+						cnt++;
+					}
+				}
+			}
+		}
+	}
+
+	public static boolean isIn(int nx, int ny) {
+		return nx >= 0 && ny >= 0 && nx < H && ny < W;
+	}
+
+	public static void downBlock() {
+		// 밑에서 두번째 줄부터 보자!
+		for (int i = 0; i < copyMap[0].length; i++) {
+			for (int j = copyMap.length - 2; j >= 0; j--) {
+				// 벽돌이 있다면
+				if (copyMap[j][i] > 0) {
+					int x = j;
+					while (true) {
+						if (x + 1 >= H || copyMap[x + 1][i] > 0)
+							break;
+						x++;
+					}
+					if (j == x)
+						continue;
+					copyMap[x][i] = copyMap[j][i];
+					copyMap[j][i] = 0;
+				}
+			}
+		}
+	}
+
+	public static void copy() {
+		for (int i = 0; i < map.length; i++) {
+			copyMap[i] = map[i].clone();
+		}
+	}
+}
+
+/* 943ms
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -64,7 +206,7 @@ public class SWEA5656_AD_벽돌깨기 {
 			}
 			return;
 		}
-		// 쏘는 곳 순서(조합)
+		// 쏘는 곳 순서(순열)
 		for (int i = 0; i < W; i++) {
 			shooting[cnt] = i;
 			dfs(cnt + 1);
@@ -97,7 +239,7 @@ public class SWEA5656_AD_벽돌깨기 {
 					int nx = x + (dx[i] * dis);
 					int ny = y + (dy[i] * dis);
 
-					/* 맵 넘어가는 좌표 갱신 */
+					// 맵 넘어가는 좌표 갱신 
 					if (nx < 0) { // 쐈는데 맵을 넘어간 만큼 나오면 0으로 바꿔주기
 						nx = 0;
 					}
@@ -214,3 +356,4 @@ public class SWEA5656_AD_벽돌깨기 {
 //		System.out.println();
 //	}
 }
+*/

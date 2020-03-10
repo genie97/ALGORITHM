@@ -111,7 +111,7 @@ public class SWEA1251_D4_하나로 {
 			p[v] = u;
 		} else {
 			p[u] = v;
-			if (r[u] == p[v]) {
+			if (r[u] == r[v]) {
 				r[v]++;
 			}
 		}

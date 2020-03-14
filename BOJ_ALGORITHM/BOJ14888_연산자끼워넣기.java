@@ -38,7 +38,7 @@ public class BOJ14888_연산자끼워넣기 {
 			max = Math.max(res, max);
 			return;
 		}
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) { 
 			if (operator[i] == 0)
 				continue;
 			int ans = cal(res, operand[cnt + 1], i);

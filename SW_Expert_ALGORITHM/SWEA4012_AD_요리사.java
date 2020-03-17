@@ -38,7 +38,7 @@ public class SWEA4012_AD_요리사 {
 	}
 
 	public static void comb(int cnt, int idx) {
-		[// 156ms -> 146ms 최적화: ([1,2]-[3,4] / [3,4]-[1,2]와 같은 중복 경우 제거)
+		// 156ms -> 146ms 최적화: ([1,2]-[3,4] / [3,4]-[1,2]와 같은 중복 경우 제거)
 		if (idx > N) 
 			return;
 		

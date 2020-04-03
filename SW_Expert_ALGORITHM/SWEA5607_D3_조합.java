@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
+// input으로 n과 r을 미리 입력을 받는다
+// 최대의 n을 찾아서 그 n까지만 facotrial값을 구해놓으면 시간을 조금 더 줄일 수 있다.
+// 혹은 factorial값을 미리 연산해서 배열에 저장해두고 쓴다 (6000개까지만 미리 저장 가능, 그 이상은 다시 더 구해서 저장)
 
 public class SWEA5607_D3_조합 {
 	static final int MOD = 1234567891;

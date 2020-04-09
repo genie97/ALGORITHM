@@ -12,6 +12,7 @@ public class BOJ9466_텀프로젝트 {
 
 	public static void main(String[] args) throws IOException, NumberFormatException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
 		for (int t = 0; t < T; t++) {
 			N = Integer.parseInt(br.readLine());
@@ -26,11 +27,12 @@ public class BOJ9466_텀프로젝트 {
 				student[i] = Integer.parseInt(st.nextToken());
 			}
 			for (int i = 1; i <= N; i++) {
-				if (!start[i])
+				if (!start[i] && !finish[i])
 					dfs(i);
 			}
-			System.out.println(N-cnt);
+			sb.append(N - cnt).append('\n');
 		}
+		System.out.println(sb);
 	}
 
 	static void dfs(int v) {

@@ -83,7 +83,7 @@ public class SWEA1251_D4_하나로_프림 {
 				if (!visit[curEdge.v]) { // 현재 정점이 방문 전
 					visit[curEdge.v] = true;
 					res+=curEdge.c;
-					dq.add(curEdge.v); // 현정점 갱신
+					dq.add(curEdge.v); // 현 정점 갱신
 					break;
 				}
 			}

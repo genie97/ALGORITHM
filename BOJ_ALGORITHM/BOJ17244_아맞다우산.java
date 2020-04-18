@@ -28,7 +28,7 @@ public class BOJ17244_아맞다우산 {
 					sx = i;
 					sy = j;
 				} else if (map[i][j] == 'X') {
-					map[i][j] = (char) (things + '0');
+					map[i][j] = (char) (things + '0'); // 물건 0~4까지 번호 매기기
 					things++;
 				}
 			}
@@ -39,10 +39,10 @@ public class BOJ17244_아맞다우산 {
 
 	static int bfs() {
 		Queue<int[]> q = new LinkedList<>();
-		boolean[][][] visit = new boolean[M][N][1 << things];
-		int key = 0;
-		q.add(new int[] { sx, sy, key });
-		visit[sx][sy][key] = true;
+		boolean[][][] visit = new boolean[M][N][1 << things]; // 해당위치, 물건 몇개 찾았는지 (순열)
+		int t = 0;
+		q.add(new int[] { sx, sy, t });
+		visit[sx][sy][t] = true;
 		int move = 0;
 
 		while (!q.isEmpty()) {
@@ -50,10 +50,10 @@ public class BOJ17244_아맞다우산 {
 			while (size-- > 0) {
 				int x = q.peek()[0];
 				int y = q.peek()[1];
-				int t = q.peek()[2];
+				t = q.peek()[2];
 				q.poll();
 
-				if (map[x][y] == 'E' && t == (1 << things) - 1) {
+				if (map[x][y] == 'E' && t == (1 << things) - 1) { // 물건을 다 찾아서 도착
 					return move;
 				}
 				for (int i = 0; i < 4; i++) {

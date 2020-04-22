@@ -21,7 +21,7 @@ public class BOJ11066_파일합치기 {
 			}
 			int[][] chain = new int[N + 1][N + 1];
 			for (int len = 2; len <= N; len++) { // 합치는 길이 (연속 2~N까지)
-				for (int i = 1; i <= N - len + 1; i++) { // 1 ~ 길이만큼 확인 (len=2일때, [1,2] / [2,3] / [3,4]
+				for (int i = 1; i <= N - len + 1; i++) { // 1 ~ 길이만큼 확인 (len=2일때, [1,2] / [2,3] / [3,4] )
 					int j = i + len - 1;
 					chain[i][j] = Integer.MAX_VALUE;
 

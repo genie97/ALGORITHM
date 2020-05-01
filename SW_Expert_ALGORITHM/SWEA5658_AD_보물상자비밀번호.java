@@ -13,6 +13,7 @@ public class SWEA5658_AD_보물상자비밀번호 {
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
+		
 		for (int tc = 1; tc <= T; tc++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			N = Integer.parseInt(st.nextToken());

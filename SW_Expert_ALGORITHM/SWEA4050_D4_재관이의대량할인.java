@@ -9,6 +9,7 @@ public class SWEA4050_D4_재관이의대량할인 {
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
+		
 		for (int tc = 1; tc <= T; tc++) {
 			int N = Integer.parseInt(br.readLine());
 			int sum = 0;

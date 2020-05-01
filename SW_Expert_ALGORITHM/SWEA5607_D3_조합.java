@@ -14,6 +14,7 @@ public class SWEA5607_D3_조합 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
+		
 		facto[0] = facto[1] = 1;
 		for (int i = 2; i < 1000001; i++) {
 			facto[i] = (i * facto[i - 1]) % MOD; // 각 팩토리얼 값을 MOD로 나눈 값을 다 저장

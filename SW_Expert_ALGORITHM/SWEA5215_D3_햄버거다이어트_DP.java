@@ -8,6 +8,7 @@ public class SWEA5215_D3_햄버거다이어트_DP {
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int TC = Integer.parseInt(br.readLine());
+		
 		for (int tc = 1; tc <= TC; tc++) {
 			sb.append('#').append(tc).append(' ');
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");

@@ -9,6 +9,7 @@ public class SWEA4530_D4_극한의청소작업 {
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
+		
 		for (int tc = 1; tc <= T; tc++) {
 			sb.append('#').append(tc).append(' ');
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");

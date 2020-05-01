@@ -11,6 +11,7 @@ public class SWEA6719_D4_성수의프로그래밍강좌시청 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
+		
 		for (int tc = 1; tc <= T; tc++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			int N = Integer.parseInt(st.nextToken());

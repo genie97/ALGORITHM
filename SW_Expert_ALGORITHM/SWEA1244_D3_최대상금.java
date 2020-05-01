@@ -14,6 +14,7 @@ public class SWEA1244_D3_최대상금 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int T = Integer.parseInt(st.nextToken());
+		
 		for (int tc = 1; tc <= T; tc++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int num = Integer.parseInt(st.nextToken());

@@ -10,6 +10,7 @@ public class SWEA9659_D4_다항식계산 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
+		
 		for (int tc = 1; tc <= T; tc++) {
 			sb.append('#').append(tc).append(' ');
 			int N = Integer.parseInt(br.readLine());

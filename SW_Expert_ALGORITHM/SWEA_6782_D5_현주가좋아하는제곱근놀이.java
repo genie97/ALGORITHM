@@ -7,6 +7,7 @@ public class SWEA_6782_D5_현주가좋아하는제곱근놀이 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
+		
 		for (int tc = 1; tc <= T; tc++) {
 			long N = Long.parseLong(br.readLine());
 			int ans = 0;

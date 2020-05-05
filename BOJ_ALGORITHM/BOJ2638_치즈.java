@@ -1,3 +1,116 @@
+/* 88ms */
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class BOJ2638_치즈 {
+	static int N, M;
+	static int[][] map;
+	static int[] dx = { -1, 1, 0, 0 };
+	static int[] dy = { 0, 0, -1, 1 };
+	static Queue<int[]> q; // 녹을 치즈가 있는 확인하기 위한 전체 배열 큐
+	static Queue<int[]> cq; // 다음에 녹을 치즈가 담기는 큐
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		N = Integer.parseInt(st.nextToken()); // 세로
+		M = Integer.parseInt(st.nextToken()); // 가로
+		map = new int[N][M];
+		for (int i = 0; i < map.length; i++) {
+			String str = br.readLine();
+			for (int j = 0, index = 0; j < map[i].length; j++, index += 2) {
+				char ch = str.charAt(index);
+				if (ch == '0')
+					map[i][j] = -1; // 치즈가 없는 위치라면 -1
+				else
+					map[i][j] = 0; // 치즈가 있는 위치라면 0
+			}
+		}
+
+		q = new LinkedList<>();
+		cq = new LinkedList<>();
+
+		q.offer(new int[] { 0, 0 });
+		map[0][0] = -2;
+
+		while (!q.isEmpty()) {
+			int[] pos = q.poll();
+			for (int d = 0; d < 4; d++) {
+				int nx = pos[0] + dx[d];
+				int ny = pos[1] + dy[d];
+				if (isIn(nx, ny)) {
+					if (map[nx][ny] == -1) {
+						map[nx][ny] = -2;
+						q.add(new int[] { nx, ny });
+					} else if (0 <= map[nx][ny]) {
+						if (++map[nx][ny] >= 2) { // 녹아 없어질 애들
+							cq.add(new int[] { nx, ny });
+							map[nx][ny] = -2;
+						}
+					}
+				}
+			}
+		}
+
+		int time = 0; // 시간
+
+		// 녹을 치즈들 확인하기!
+		while (!cq.isEmpty()) {
+			int size = cq.size();
+			time++;
+			while (size-- > 0) {
+				int[] pos = cq.poll();
+				for (int d = 0; d < 4; d++) {
+					int nx = pos[0] + dx[d];
+					int ny = pos[1] + dy[d];
+					if (isIn(nx, ny)) {
+						if (map[nx][ny] == -1) {
+							map[nx][ny] = -2;
+							q.add(new int[] { nx, ny });
+						} else if (0 <= map[nx][ny]) {
+							if (++map[nx][ny] >= 2) { // 녹아 없어질 애들
+								cq.add(new int[] { nx, ny });
+								map[nx][ny] = -2;
+							}
+						}
+					}
+				}
+			}
+
+			while (!q.isEmpty()) {
+				int[] pos = q.poll();
+				for (int d = 0; d < 4; d++) {
+					int nx = pos[0] + dx[d];
+					int ny = pos[1] + dy[d];
+					if (isIn(nx, ny)) {
+						if (map[nx][ny] == -1) {
+							map[nx][ny] = -2;
+							q.add(new int[] { nx, ny });
+						} else if (0 <= map[nx][ny]) {
+							if (++map[nx][ny] >= 2) { // 녹아 없어질 애들
+								cq.add(new int[] { nx, ny });
+								map[nx][ny] = -2;
+							}
+						}
+					}
+				}
+			}
+		}
+		System.out.println(time);
+	}
+
+	static boolean isIn(int x, int y) {
+		return 0 <= x && 0 <= y && x < N && y < M;
+	}
+
+}
+
+/* 1980ms
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -101,7 +214,7 @@ public class BOJ2638_치즈 {
 		}
 	}
 }
-
+*/
 /* 반례
 5 5
 0 0 0 0 0

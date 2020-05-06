@@ -172,3 +172,170 @@ public class BOJ17472_다리만들기2 {
 	}
 
 }
+
+/* visit배열 없이 만들기 (72ms)
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class BOJ17472_다리만들기2 {
+	static int N, M;
+	static int[][] map;
+	static int[] dx = { -1, 1, 0, 0 };
+	static int[] dy = { 0, 0, -1, 1 };
+
+	static class Edge implements Comparable<Edge> {
+		int u, v, c;
+
+		public Edge(int u, int v, int c) {
+			super();
+			this.u = u;
+			this.v = v;
+			this.c = c;
+		}
+
+		@Override
+		public int compareTo(Edge o) {
+			return Integer.compare(this.c, o.c);
+		}
+
+		@Override
+		public String toString() {
+			return "Edge [u=" + u + ", v=" + v + ", c=" + c + "]";
+		}
+
+	}
+
+	static List<Edge> bridge;
+	static int[] p; // 부모 노드
+	static int[] r; // 랭크 매겨서 링크하기
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		map = new int[N][M];
+
+		for (int i = 0; i < N; i++) {
+			String str = br.readLine();
+			for (int j = 0, idx = 0; j < M; j++, idx += 2) {
+				map[i][j] = (str.charAt(idx) == '1') ? 0 : -1;
+			}
+		}
+		int idx = 1; // 섬번호
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				if (map[i][j] == 0) {
+					map[i][j] = idx;
+					makeIsland(i, j, idx++);
+				}
+			}
+		}
+
+		bridge = new ArrayList<>();
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				if (map[i][j] > 0) {
+					makeBridge(i, j, map[i][j], 0, 0); // 가로
+					makeBridge(i, j, map[i][j], 2, 0); // 세로
+				}
+			}
+		}
+
+		// 길이가 짧은 순으로
+		Collections.sort(bridge);
+		
+		p = new int[idx - 1];
+		r = new int[p.length];
+
+		// 집합
+		for (int i = 0; i < idx - 1; i++) {
+			makeSet(i);
+		}
+
+		int res = 0;
+		int link_cnt = 0;
+		for (int i = 0; i < bridge.size(); i++) {
+			int u = getParent(bridge.get(i).u);
+			int v = getParent(bridge.get(i).v);
+			if (u != v) {
+				union(u, v);
+				link_cnt++;
+				res += bridge.get(i).c;
+			}
+		}
+		
+		System.out.println(link_cnt == idx - 2 ? res : -1);
+
+	}
+
+	static void union(int u, int v) {
+		link(u, v);
+	}
+
+	static void link(int u, int v) {
+		if (r[u] < r[v]) {
+			p[u] = p[v];
+		} else {
+			if (r[u] == r[v]) {
+				r[u]++;
+			}
+			p[v] = p[u];
+		}
+
+	}
+
+	static int getParent(int x) {
+		if (p[x] == x)
+			return p[x];
+		else
+			return p[x] = getParent(p[x]);
+	}
+
+	static void makeSet(int x) {
+		p[x] = x;
+	}
+
+	static void makeBridge(int x, int y, int island, int dir, int len) {
+		if (map[x][y] > 0 && map[x][y] != island) { // 다른 섬에 도착한다면?
+			if (len - 1 >= 2) {
+				bridge.add(new Edge(island - 1, map[x][y] - 1, len - 1));
+			}
+			return;
+		}
+		for (int d = dir; d < dir + 2; d++) {
+			int nx = x + dx[d];
+			int ny = y + dy[d];
+			if (!isIn(nx, ny))
+				continue;
+			if (map[nx][ny] == -2 || map[nx][ny] == island)
+				continue;
+			map[nx][ny] = map[nx][ny] == -1 ? -2 : map[nx][ny]; // 다리를 놓음
+			makeBridge(nx, ny, island, dir, len + 1);
+			map[nx][ny] = map[nx][ny] == -2 ? -1 : map[nx][ny]; // 다리를 뺌
+		}
+	}
+
+	static void makeIsland(int x, int y, int num) {
+		for (int d = 0; d < 4; d++) {
+			int nx = x + dx[d];
+			int ny = y + dy[d];
+			if (!isIn(nx, ny))
+				continue;
+			if (map[nx][ny] == -1 || map[nx][ny] == num)
+				continue;
+			map[nx][ny] = num;
+			makeIsland(nx, ny, num);
+		}
+	}
+
+	static boolean isIn(int x, int y) {
+		return 0 <= x && 0 <= y && x < N && y < M;
+	}
+}
+*/

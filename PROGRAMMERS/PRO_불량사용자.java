@@ -31,7 +31,8 @@ public class PRO_불량사용자 {
 		return answer;
 	}
 
-	static void dfs(String[] user_id, String[] banned_id, int n, int m, boolean[] visit, int cnt) {
+        // 순열
+        static void dfs(String[] user_id, String[] banned_id, int n, int m, boolean[] visit, int cnt) {
 		if (cnt == m) {
 			String str = makeAnswer(permList);
 			set.add(str);
@@ -55,7 +56,8 @@ public class PRO_불량사용자 {
 			visit[i] = false;
 		}
 	}
-
+        
+        // 순열 리스트 소팅해서 스트링변환
 	static String makeAnswer(ArrayList<Integer> permList) {
 		ArrayList<Integer> list = new ArrayList<>();
 		list.addAll(permList);
@@ -67,7 +69,8 @@ public class PRO_불량사용자 {
 		}
 		return str;
 	}
-
+     
+        // 금지된 아이디랑 일치하는지 확인
 	static boolean right(String bid, String uid) {
 		for (int len = 0; len < uid.length(); len++) {
 			if (bid.charAt(len) != '*' && uid.charAt(len) != bid.charAt(len)) // 와일드 카드가 아닐 때, 둘이 같지 않으면 다름

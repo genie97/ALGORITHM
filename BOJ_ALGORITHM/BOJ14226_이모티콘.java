@@ -32,7 +32,7 @@ public class BOJ14226_이모티콘 {
 
 	static int bfS() {
 		Queue<EMOTICON> q = new LinkedList<>();
-		boolean[][] visit = new boolean[1001][1001];
+		boolean[][] visit = new boolean[1001][1001]; // [화면에 띄워진 글자수][현재 클립보드에 저장된 글자수]
 		q.add(new EMOTICON('V', 1, 1, 1)); // 처음 시작은 복사만 가능!
 		visit[1][1] = true;
 

@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
  * 앞으로 이동/뒤로 이동 작업은 시간이 1초가 걸린다
  * 가중치가 있다고 생각하므로, 순간이동 작업을 먼저 하는 방식으로 해결해야함
  */
+
 public class BOJ13549_숨바꼭질3 {
 	static int N, K;
 	static int[] d = { 2, -1, 1 };

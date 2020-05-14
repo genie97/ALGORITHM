@@ -1,4 +1,66 @@
-/* solution1. dfs (2,073 ms) */
+/*Solution1. dfs + memoization (347 ms)*/
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class SWEA5643_D4_키순서 {
+	static int[][] map;
+	static int cnt;
+
+	public static void main(String[] args) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+		for (int tc = 1; tc <= T; tc++) {
+			sb.append('#').append(tc).append(' ');
+			int N = Integer.parseInt(br.readLine());
+			int M = Integer.parseInt(br.readLine());
+			map = new int[N + 1][N + 1];
+
+			StringTokenizer st = null;
+			for (int i = 0; i < M; i++) {
+				st = new StringTokenizer(br.readLine(), " ");
+				int small = Integer.parseInt(st.nextToken());
+				int big = Integer.parseInt(st.nextToken());
+				map[small][big] = 1;
+			}
+			int res = 0;
+
+			for (int i = 1; i <= N; i++) {
+				dfs(i);
+			}
+
+			for (int i = 1; i < map.length; i++) {
+				int sum = 0;
+				for (int j = 1; j < map[i].length; j++) {
+					sum += (map[i][j] + map[j][i]);
+				}
+				if (sum == N - 1)
+					res++;
+			}
+			sb.append(res).append('\n');
+		}
+		System.out.println(sb);
+	}
+
+	static void dfs(int v) {
+		if (map[v][0] == -1)
+			return;
+		for (int i = 1; i < map.length; i++) {
+			if (map[v][i] == 1) {
+				dfs(i);
+				for (int j = 1; j < map.length; j++) {
+					map[v][j] |= map[i][j];
+				}
+			}
+		}
+		map[v][0] = -1;
+	}
+}
+
+/* solution2. dfs (2,073 ms) 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -68,8 +130,8 @@ public class SWEA5643_D4_키순서 {
 	}
 
 }
-
-/* solution2. floyd warshall (2,225ms)
+*/
+/* solution3. floyd warshall (2,225ms)
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

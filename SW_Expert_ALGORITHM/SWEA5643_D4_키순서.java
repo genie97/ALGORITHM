@@ -34,7 +34,6 @@ public class SWEA5643_D4_키순서 {
 				visit = new boolean[N + 1];
 				dfs_tall(i);
 				dfs_small(i);
-				System.out.println(i+"번 정점: " + cnt);
 				if (cnt == N - 1)
 					res++;
 			}

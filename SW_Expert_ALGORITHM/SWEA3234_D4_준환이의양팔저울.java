@@ -9,6 +9,7 @@ public class SWEA3234_D4_준환이의양팔저울 {
 	static int sum;
 	static long ans;
 	static boolean[] used;
+	
 	static int exponential[] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
 	static int factorial[] = { 0, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
 

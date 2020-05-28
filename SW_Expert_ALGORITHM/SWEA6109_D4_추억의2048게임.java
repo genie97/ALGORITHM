@@ -13,6 +13,7 @@ public class SWEA6109_D4_추억의2048게임 {
 	public static void main(String[] args) throws IOException {
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
 		int T = Integer.parseInt(br.readLine());
 		for (int tc = 1; tc <= T; tc++) {
 			sb.append('#').append(tc).append('\n');

@@ -239,9 +239,9 @@ public class SWEA1953_AD_탈주범검거 {
 					if (block_hole[block][d] == 1) { // 현재 서있는 블럭에 방향 d가 뚫려있는지!
 						int ni = now.i + di[d];
 						int nj = now.j + dj[d];
-
+						// 반대 방향이 열려있는지 확인
 						if (ni >= 0 && ni < N && nj >= 0 && nj < M && map[ni][nj] > 0 && !visit[ni][nj]
-								&& block_hole[map[ni][nj]][(d + 2) % 4] == 1) {
+								&& block_hole[map[ni][nj]][(d + 2) % 4] == 1) { 
 							visit[ni][nj] = true;
 							queue.add(new Point(ni, nj));
 						}

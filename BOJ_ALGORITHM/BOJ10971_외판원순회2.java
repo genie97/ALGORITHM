@@ -41,16 +41,16 @@ public class BOJ10971_외판원순회2 {
 			return;
 
 		if (cnt == N) {
-			cost = Math.min(cost, sum + map[v][st]);
+			if (map[v][st] > 0)
+				cost = Math.min(cost, sum + map[v][st]);
+			return;
 		}
 
 		for (int i = 0; i < map[v].length; i++) {
-			if (cnt < N) {
-				if (map[v][i] != 0 && !visit[i]) {
-					visit[i] = true;
-					dfs(i, sum + map[v][i], cnt + 1, st);
-					visit[i] = false;
-				}
+			if (map[v][i] != 0 && !visit[i]) {
+				visit[i] = true;
+				dfs(i, sum + map[v][i], cnt + 1, st);
+				visit[i] = false;
 			}
 		}
 	}

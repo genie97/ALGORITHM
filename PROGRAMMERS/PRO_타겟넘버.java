@@ -1,8 +1,7 @@
 
 public class PRO_타겟넘버 {
 	static int ans;
-	static boolean[] visit;
-
+	
 	public static void main(String[] args) {
 		int[] numbers = { 1, 1, 1, 1, 1 };
 		int target = 3;
@@ -13,7 +12,6 @@ public class PRO_타겟넘버 {
 	public static int solution(int[] numbers, int target) {
 		int answer = 0;
 		ans = 0;
-		visit = new boolean[numbers.length];
 		dfs(numbers, target, 0, 0);
 		answer = ans;
 		return answer;

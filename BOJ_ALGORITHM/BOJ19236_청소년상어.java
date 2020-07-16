@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
+/*
+1. map을 되돌려야 한다는 것!
+2. 상어의 위치를 되돌려야 한다는 것!
+=> 이부분에서 오류가 있는 듯하여 수정 필요!
+*/
 
 // 1. 상어는 (0,0)에서 시작한다 -> (0,0)자리에 있는 물고기를 먹고 그 방향을 갖는다
 // 2-1. 물고기는 번호가 작은순으로 가진 방향으로 한칸씩 움직인다 (1번부터 16번까지다)

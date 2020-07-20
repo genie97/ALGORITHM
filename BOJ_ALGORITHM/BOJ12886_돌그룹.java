@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-
+// 틀렸습니다.
 public class BOJ12886_돌그룹 {
 	static int A, B, C;
 

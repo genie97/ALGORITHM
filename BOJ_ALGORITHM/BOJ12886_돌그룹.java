@@ -4,9 +4,10 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-// 틀렸습니다.
+
 public class BOJ12886_돌그룹 {
-	static int A, B, C;
+	static int A, B, C, D;
+	static boolean[][] visit;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,64 +16,67 @@ public class BOJ12886_돌그룹 {
 		B = Integer.parseInt(st.nextToken());
 		C = Integer.parseInt(st.nextToken());
 
-		int ans = bfs();
-		System.out.println(ans);
+		D = A + B + C;
+
+		if (D % 3 != 0) {
+			System.out.println(0);
+		} else {
+			bfs();
+		}
 	}
 
-	static int bfs() {
+	static void bfs() {
 		Queue<int[]> q = new LinkedList<>();
-		boolean[][] visit = new boolean[501][3]; // 1~500까지 숫자, 뒤에는 A,B,C
-		q.add(new int[] { A, B, C });
+		visit = new boolean[1000][1000];
+		q.add(new int[] { A, B });
 
-		visit[A][0] = true;
-		visit[B][1] = true;
-		visit[C][2] = true;
+		visit[A][B] = true;
 
 		while (!q.isEmpty()) {
-			int[] stone = q.poll();
-			if (stone[0] == stone[1] && stone[1] == stone[2]) {
-				return 1;
+			int x = q.peek()[0];
+			int y = q.peek()[1];
+			q.poll();
+
+			int z = D - x - y;
+
+			if (x == y && y == z) {
+				System.out.println(1);
+				return;
 			}
 
 			// 2개씩 선택하는 방식
-			int X = 0, Y = 0;
-			int xIdx = 0, yIdx = 0;
+			int[] nx = new int[] { x, x, y };
+			int[] ny = new int[] { y, z, z };
 
 			for (int i = 0; i < 3; i++) {
-				for (int j = i + 1; j < 3; j++) {
-					if (stone[i] <= stone[j]) {
-						X = stone[i];
-						xIdx = i;
-						Y = stone[j];
-						yIdx = j;
-					} else {
-						X = stone[j];
-						xIdx = j;
-						Y = stone[i];
-						yIdx = i;
-					}
+				int a = nx[i];
+				int b = ny[i];
 
-					if (!isIn(X, Y))
-						continue;
-					if (visit[X + X][xIdx] && visit[Y - X][yIdx])
-						continue;
+				if (a < b) {
+					b -= a;
+					a += a;
+				} else if (a > b) {
+					a -= b;
+					b += b;
+				} else {
+					continue;
+				}
 
-					visit[X + X][xIdx] = true;
-					visit[Y - X][yIdx] = true;
+				int c = D - a - b;
+				int X = Math.min(Math.min(a, b), c);
+				int Y = Math.max(Math.min(a, b), c);
 
-					int[] new_stone = new int[] { stone[0], stone[1], stone[2] };
-
-					new_stone[xIdx] = X + X;
-					new_stone[yIdx] = Y - X;
-					q.add(new_stone);
+				if (isIn(X, Y) && !visit[X][Y]) {
+					q.add(new int[] { X, Y });
+					visit[X][Y] = true;
 				}
 			}
 
 		}
-		return 0;
+		System.out.println(0);
 	}
 
 	private static boolean isIn(int x, int y) {
-		return 1 <= (x + x) && (x + x) <= 500 && 1 <= (y - x) && (y - x) <= 500;
+		return 1 <= x && x <= 500 && 1 <= y && y <= 500;
 	}
 }

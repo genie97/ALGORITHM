@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // 재현시 N * N
@@ -20,6 +21,7 @@ import java.util.StringTokenizer;
 // 2번 선거구: 1 ≤ r ≤ x+d2, y < c ≤ N
 // 3번 선거구: x+d1 ≤ r ≤ N, 1 ≤ c < y-d1+d2
 // 4번 선거구: x+d2 < r ≤ N, y-d1+d2 ≤ c ≤ N
+
 public class BOJ17779_게리맨더링2 {
 	static int N;
 	static int[][] people;
@@ -44,7 +46,7 @@ public class BOJ17779_게리맨더링2 {
 			// 특정 d1,d2를 선택한다
 			for (int d1 = 1; d1 <= sum - 1; d1++) {
 				for (int d2 = 1; d2 <= sum - d1; d2++) {
-					simulation(2, 2);
+					simulation(d1, d2);
 				}
 			}
 		}
@@ -54,24 +56,14 @@ public class BOJ17779_게리맨더링2 {
 	static void simulation(int d1, int d2) {
 		for (int r = 1; r < people.length; r++) {
 			for (int c = 1; c < people[r].length; c++) {
-				if (!isRange(2, 4, d1, d2))
+				if (!isRange(r, c, d1, d2))
 					continue;
 				map = new int[N + 1][N + 1]; // 구역 나누기 용
-				make5(2, 4, d1, d2);
-				if (makeAnother(2, 4, d1, d2)) // 구역이 제대로 안나눠지는 경우라 제거
+				make5(r, c, d1, d2);
+				if (!makeAnother(r, c, d1, d2)) // 구역이 제대로 안나눠지는 경우라 제거
 					continue;
-				make0To5();
 				int diff = findMinSub();
 				minD = Math.min(minD, diff);
-			}
-		}
-	}
-
-	static void make0To5() {
-		for (int i = 1; i < map.length; i++) {
-			for (int j = 1; j < map[i].length; j++) {
-				if (map[i][j] == 0)
-					map[i][j] = 5;
 			}
 		}
 	}
@@ -84,10 +76,9 @@ public class BOJ17779_게리맨더링2 {
 				sum[v] += people[i][j];
 			}
 		}
-
-		int maxV = 0;
-		int minV = 0;
-		for (int i = 0; i < sum.length; i++) {
+		int maxV = Integer.MIN_VALUE;
+		int minV = Integer.MAX_VALUE;
+		for (int i = 1; i < sum.length; i++) {
 			maxV = Math.max(maxV, sum[i]);
 			minV = Math.min(minV, sum[i]);
 		}
@@ -100,7 +91,7 @@ public class BOJ17779_게리맨더링2 {
 		for (int i = 1; i < r + d1; i++) {
 			for (int j = 1; j <= c; j++) {
 				if (map[i][j] == 5)
-					break;
+					continue;
 				map[i][j] = 1;
 				area[1]++;
 			}
@@ -124,7 +115,7 @@ public class BOJ17779_게리맨더링2 {
 		for (int i = r + d1; i <= N; i++) {
 			for (int j = 1; j < c - d1 + d2; j++) {
 				if (map[i][j] == 5)
-					break;
+					continue;
 				map[i][j] = 3;
 				area[3]++;
 			}
@@ -136,7 +127,7 @@ public class BOJ17779_게리맨더링2 {
 		for (int i = r + d2 + 1; i <= N; i++) {
 			for (int j = c - d1 + d2; j <= N; j++) {
 				if (map[i][j] == 5)
-					break;
+					continue;
 				map[i][j] = 4;
 				area[4]++;
 			}
@@ -168,12 +159,31 @@ public class BOJ17779_게리맨더링2 {
 		for (int dx = r + d2, dy = c + d2; dx <= r + d2 + d1 && dy >= c + d2 - d1; dx++, dy--) {
 			map[dx][dy] = 5;
 		}
+
+		// 경계선 안쪽
+		for (int i = 1; i < map.length; i++) {
+			for (int j = 1; j < map[i].length; j++) {
+				if (map[i][j] == 5) {
+					if ((i == r && j == c) || (i == r + d1 + d2 && j == c - d1 + d2)) {
+						break;
+					} else {
+						int ni = i;
+						int nj = j + 1;
+						while (map[ni][nj] != 5) {
+							map[ni][nj] = 5;
+							nj++;
+						}
+						break;
+					}
+				}
+			}
+		}
 	}
 
 	static boolean isRange(int r, int c, int d1, int d2) {
-		if (r + d1 + d2 < 1 || r + d1 + d2 > 7)
+		if (r + d1 + d2 < 1 || r + d1 + d2 > N)
 			return false;
-		if (c - d1 < 1 || c - d1 > 7 || c + d2 < 1 || c + d2 > 7)
+		if (c - d1 < 1 || c - d1 > N || c + d2 < 1 || c + d2 > N)
 			return false;
 		return true;
 	}

@@ -11,6 +11,7 @@ public class BOJ14719_빗물 {
 		int W = Integer.parseInt(st.nextToken());
 		int[] block = new int[W];
 		st = new StringTokenizer(br.readLine(), " ");
+		
 		for (int i = 0; i < W; i++) {
 			block[i] = Integer.parseInt(st.nextToken());
 		}

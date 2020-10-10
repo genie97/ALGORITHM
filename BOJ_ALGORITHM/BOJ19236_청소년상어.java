@@ -3,27 +3,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-/*
-1. map을 되돌려야 한다는 것!
-2. 상어의 위치를 되돌려야 한다는 것!
-=> 이부분에서 오류가 있는 듯하여 수정 필요!
-*/
 
 // 1. 상어는 (0,0)에서 시작한다 -> (0,0)자리에 있는 물고기를 먹고 그 방향을 갖는다
 // 2-1. 물고기는 번호가 작은순으로 가진 방향으로 한칸씩 움직인다 (1번부터 16번까지다)
 // 2-2. 빈칸은 그냥 가고, 물고기가 있는 칸은 자리를 교환한다.
 // 2-3. 상어가 있거나 공간을 넘어가는 칸이 있다면 반시계방향으로 45도씩 회전해본다
 // 2-4. 그래도 이동을 못하면 가만히 있는다
-
 // 3-1. 상어가 움직인다.
 // 3-2. 상어는 그 칸에 물고기가 없으면 안간다
-// 3-3. 상어가 방향으로 갈 수 있는 4개의 칸 중 한 곳을 선택한다
+// 3-3. 상어는 한번에 여러칸 갈 수 있지만 지나가면서는 물고기를 못먹는다
 // 3-4. 물고기를 먹으면 그 물고기의 방향을 갖게 된다.
-// 3에서 다시 2번으로 수행한다.
-
 // 4. 상어가 더 이상 움직이지 못한다면 퇴근한다!
-
-// 이슈: 맵 shallow copy 되는 부분 확인해서 변경하기
 
 public class BOJ19236_청소년상어 {
 	static class fishInfo {
@@ -89,77 +79,23 @@ public class BOJ19236_청소년상어 {
 //			System.out.println(Arrays.toString(map[i]));
 //		}
 
-		int num = map[0][0]; // 0,0에 있는 물고기 번호
-		max = num;
+//		int num = map[0][0]; // 0,0에 있는 물고기 번호
+//		max = num;
 
 		// 상어가 맵에 딱 들어왔다!
-		shark = new sharkInfo(fish[num].dir, 0, 0, num);
-		fish[num].alive = false;
-		map[0][0] = -1; // 상어가 있었던 곳은 이제 상어가 사라지면 0이 되는 곳이다.
-		
-		// 1. 물고기를 움직인다.
-		map = moveFish(map, fish);	
-		moveShark(map, fish, 0, 0);		
-		System.out.println(max);
-	}
+//		shark = new sharkInfo(fish[num].dir, 0, 0, num);
+//		map[0][0] = -1; // 상어가 있었던 곳은 이제 상어가 사라지면 0이 되는 곳이다.
 
-	static void moveShark(int[][] ori_map, fishInfo[] fish, int x, int y) {	
-		int[][] map = new int[4][4];
-		map = copyMap(map, ori_map);
-		
-		// 2. 상어가 먹는다
-		for (int i = 1; i <= 4; i++) {
-			if(max < shark.sum) {
-				max = shark.sum;
-			}
-			// 되돌리기 위한 shark의 기존
-			sharkInfo tmpS = new sharkInfo(shark.dir, shark.x, shark.y, shark.sum);
+		// 이제 상어가 이동할 수 없을 때까지 움직인다!
+		//while (true) {
+//			map = moveFish(map, fish);
+		//}
 
-			int nx = x + (dx[shark.dir] * i);
-			int ny = y + (dy[shark.dir] * i);
-
-			if (!isIn(nx, ny))
-				continue; // 맵의 범위를 넘어간다
-			if (map[nx][ny] == 0)
-				continue; // 가려는 위치에 물고기가 없다면 제외
-
-			// 되돌리기 위한 물고기
-			int fishNum = map[nx][ny]; // 있던 물고기
-			fishInfo tmpF = new fishInfo(fish[fishNum].dir, fish[fishNum].x, fish[fishNum].y, fish[fishNum].alive, fish[fishNum].roate);
-
-			// 움직인 위치에 물고기를 먹었다.
-			shark.x = nx;
-			shark.y = ny;
-			shark.dir = fish[fishNum].dir; // 먹은 물고기의 방향을 갖는다
-			shark.sum += fishNum; // 먹은 물고기의 범위
-			fish[fishNum].alive = false; // 물고기를 먹음
-			map[tmpS.x][tmpS.y] = 0;
-			map[nx][ny] = -1; // 상어가 존재하는 곳에 -1
-			
-			// 1. 물고기가 움직인다. 
-			map = moveFish(map, fish);
-			moveShark(map, fish, nx, ny);
-			
-			// 복원
-			shark = tmpS;
-			fish[fishNum] = tmpF;
-			map[tmpS.x][tmpS.y] = -1;
-			map[nx][ny] = fishNum;
-		}		
-	}
-
-	static int[][] copyMap(int[][] map, int[][] ori_map) {
-		for (int i = 0; i < ori_map.length; i++) {
-			for (int j = 0; j < ori_map.length; j++) {
-				map[i][j] = ori_map[i][j];
-			}
-		}
-		return map;
 	}
 
 	static int[][] moveFish(int[][] map, fishInfo[] fish) {
 		// 1번부터 16번까지 움직이자
-		for (int i = 1; i < fish.length; i++) {
+		for (int i = 1; i <= 2; i++) {
 			boolean doMove = true; // 지금 물고기가 움직일 수 있는지?
 
 			// 우선 물고기가 먹힌 애면 제외
@@ -169,21 +105,21 @@ public class BOJ19236_청소년상어 {
 			int ny = fish[i].y + dy[fish[i].dir];
 
 			// 상어가 있거나 공간을 넘으면 45도씩 회전해본다
-			int nDir = fish[i].dir;
-			if (!isIn(nx, ny) || map[nx][ny] == -1) {
+			if (map[nx][ny] == -1 || !isIn(nx, ny)) {
+				int nDir = 0;
 				while (true) {
 					if (fish[i].roate == 8) {
 						doMove = false;
 						break;
 					}
-
-					nDir = (nDir + 1) % 8;
+					
+					nDir = (fish[i].dir + 1) % 8;
 					int fx = fish[i].x + dx[nDir];
 					int fy = fish[i].y + dy[nDir];
 					// 방향을 바꿔서 문제 없이 이동이 된다면? while문을 나온다!
-					if (isIn(fx, fy) && map[fx][fy] != -1) {
-						nx = fx;
-						ny = fy;
+					if (map[fx][fy] != -1 && isIn(fx, fy)) {
+						nx = fish[i].x = fx;
+						ny = fish[i].y = fy;
 						fish[i].dir = nDir;
 						fish[i].roate = 0;
 						break;
@@ -191,20 +127,23 @@ public class BOJ19236_청소년상어 {
 						fish[i].roate++;
 					}
 				}
+				
+				for (int s = 0; s < 4; s++) {
+					System.out.println(Arrays.toString(map[s]));
+				}
 			}
 
 			if (doMove) { // 이동가능하면 한다!
-				int tx = fish[i].x;
-				int ty = fish[i].y;
-				int ti = map[nx][ny];
-				
 				if (map[nx][ny] == 0) { // 물고기가 없다
 					map[nx][ny] = i;
-					map[tx][ty] = 0;
 					fish[i].x = nx;
 					fish[i].y = ny;
 				} else {
 					// 교환할 자리
+					int tx = fish[i].x;
+					int ty = fish[i].y;
+					int ti = map[nx][ny];
+
 					map[nx][ny] = i;
 					map[tx][ty] = ti;
 
@@ -214,11 +153,6 @@ public class BOJ19236_청소년상어 {
 					fish[ti].y = ty;
 				}
 			}
-
-//			for (int s = 0; s < 4; s++) {
-//				System.out.println(Arrays.toString(map[s]));
-//			}
-//			System.out.println();
 		}
 		return map;
 	}

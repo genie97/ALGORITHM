@@ -131,6 +131,32 @@ class Solution {
 
 ##### [3진법 뒤집기](https://programmers.co.kr/learn/courses/30/lessons/68935)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int n) {
+        String s = "";
+        
+        while(n > 0){
+            int r = n % 3;
+            s += r;
+            n /= 3;
+        }
+    
+        int answer = 0;
+        
+        for(int idx = s.length() - 1, e = 0; idx >= 0; idx--, e++){
+            int num = s.charAt(idx) - '0';
+            
+            answer += num * Math.pow(3, e);
+        }
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [같은 숫자는 싫어](https://programmers.co.kr/learn/courses/30/lessons/12906)

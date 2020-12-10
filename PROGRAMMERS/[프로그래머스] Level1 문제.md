@@ -226,6 +226,26 @@ class Solution {
 
 ##### [문자열 내 마음대로 정렬하기](https://programmers.co.kr/learn/courses/30/lessons/12915)
 
+```java
+import java.util.*;
+
+class Solution {
+    public String[] solution(String[] strings, int n) {  
+        Arrays.sort(strings, new Comparator<>(){
+            public int compare(String a, String b){
+                char an = a.charAt(n);
+                char bn = b.charAt(n);
+                if(an == bn) 
+                    return a.compareTo(b);
+                return Integer.compare((int)an, (int)bn);
+            }
+        });
+        
+        return strings;
+    }
+}
+```
+
 
 
 ##### [문자열 내 p와 y의 개수](https://programmers.co.kr/learn/courses/30/lessons/12916)

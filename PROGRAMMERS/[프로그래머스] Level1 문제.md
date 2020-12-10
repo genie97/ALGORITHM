@@ -105,6 +105,48 @@ vector<int> solution(vector<int> array, vector<vector<int>> commands) {
 
 ##### [체육복](https://programmers.co.kr/learn/courses/30/lessons/42862)
 
+- 비교를 통해서 확인하는 방법
+
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int answer = n;
+        int[] people = new int[n+2];
+        
+        for(int i = 0; i < reserve.length; i++){
+            people[reserve[i]] = 2; 
+        }
+        
+        for(int i = 0; i < lost.length; i++){
+            people[lost[i]]--; 
+        }
+        
+        for(int i = 1; i <= n; i++){
+            if(people[i]==-1){
+                if(people[i-1]-1 > 0){
+                    people[i-1]--;
+                    people[i] = 1;
+                    continue;
+                }
+                if(people[i+1]-1 > 0){
+                    people[i+1]--;
+                    people[i] = 1;
+                    continue;
+                }
+            }
+        }
+        
+        for(int i = 1; i <= n; i++){
+            if(people[i] == -1)
+                answer--;
+        }
+        return answer;
+    }
+}
+```
+
 ```java
 import java.util.*;
 

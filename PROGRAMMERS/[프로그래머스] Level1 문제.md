@@ -527,21 +527,11 @@ class Solution {
             char ch = s.charAt(i);
                         
             if('A' <= ch && ch <= 'Z'){
-                int nch = (int)(ch - 'A' + n);
-                nch %= 26;
-                ch = (char)(nch + 'A');
-                answer += ch;
-            
+                ch = (char)((ch - 'A' + n) % 26 + 'A');
             } else if('a' <= ch && ch <= 'z') {
-                int nch = (int)(ch - 'a' + n);
-                nch %= 26;
-                ch =  (char)(nch + 'a');
-                answer += ch;
-            
-            } else{
-                answer += " ";
-            }
-           
+                ch = (char)((ch - 'a' + n) % 26 + 'a');
+            } 
+            answer += ch;
         }
         return answer;
     }

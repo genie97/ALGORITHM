@@ -584,6 +584,29 @@ class Solution {
 
 ##### [이상한 문자 만들기](https://programmers.co.kr/learn/courses/30/lessons/12930)
 
+```java
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        char[] charArr = s.toCharArray();
+        int point = 0;
+        for(int i = 0 ; i < charArr.length; i++){
+            if(charArr[i] == ' '){
+                answer += " ";
+                point = 0;
+                continue;
+            }
+            if(point % 2 == 0)
+                answer += Character.toUpperCase(charArr[i]);
+            else
+                answer += Character.toLowerCase(charArr[i]);
+            point++;
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [자릿수 더하기](https://programmers.co.kr/learn/courses/30/lessons/12931)

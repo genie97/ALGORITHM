@@ -871,6 +871,19 @@ class Solution {
 
 ##### [x만큼 간격이 있는 n개의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12954)
 
+```java
+class Solution {
+    public long[] solution(int x, int n) {
+        long[] answer = new long[n];
+        answer[0] = x;
+        for(int i = 1; i < n; i++){
+            answer[i] = x * (i+1);
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [직사각형 별찍기](https://programmers.co.kr/learn/courses/30/lessons/12969)

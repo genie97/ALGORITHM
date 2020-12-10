@@ -831,6 +831,23 @@ class Solution {
 
 ##### [핸드폰 번호 가리기](https://programmers.co.kr/learn/courses/30/lessons/12948)
 
+```java
+class Solution {
+    public String solution(String phone_number) {
+        String answer = "";
+        int len = phone_number.length();
+        for(int i = 0; i < len - 4; i++){
+            answer += "*";
+        }
+        for(int i = len-4; i < len; i++){
+            answer += phone_number.charAt(i);
+        }
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [행렬의 덧셈](https://programmers.co.kr/learn/courses/30/lessons/12950)

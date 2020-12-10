@@ -297,6 +297,24 @@ class Solution {
 
 ##### [문자열 다루기 기본](https://programmers.co.kr/learn/courses/30/lessons/12918)
 
+```java
+class Solution {
+    public boolean solution(String s) {
+        if(s.length() != 4 && s.length() != 6)
+            return false;
+        
+        for(int i = 0; i < s.length(); i++){
+            char ch = s.charAt(i);
+            if(Character.isAlphabetic(ch)){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
+```
+
 
 
 ##### [소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/12921)

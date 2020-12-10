@@ -452,6 +452,35 @@ class Solution {
 
 ##### [소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/12921)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int n) {
+        int[] isPrime = new int[n+1];
+        Arrays.fill(isPrime, 1);
+        
+        isPrime[1] = 0;
+        
+        for(int i = 2; i <= n; i++){
+            if(isPrime[i] == 0) continue;
+            for(int j = i * 2; j <= n; j=j+i){
+                isPrime[j] = 0;
+            }
+        }
+        
+        int answer = 0;
+        
+        for(int i = 1; i <=n; i++){
+            if(isPrime[i] == 1)
+                answer++;
+        }
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)

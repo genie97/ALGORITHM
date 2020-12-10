@@ -744,6 +744,24 @@ class Solution {
 
 ##### [최대공약수와 최소공배수](https://programmers.co.kr/learn/courses/30/lessons/12940)
 
+```java
+class Solution {
+    public int[] solution(int n, int m) {
+        int[] answer = new int[2];
+        answer[0] = gcd(n, m);
+        answer[1] = answer[0] * (n/answer[0]) * (m/answer[0]);
+        
+        return answer;
+    }
+    static int gcd(int n, int m){
+        if(m == 0) 
+            return n;
+        else 
+            return gcd(m, n%m);
+    }    
+}
+```
+
 
 
 ##### [콜라츠 추측](https://programmers.co.kr/learn/courses/30/lessons/12943)

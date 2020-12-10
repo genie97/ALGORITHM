@@ -813,6 +813,20 @@ class Solution {
 
 ##### [하샤드 수](https://programmers.co.kr/learn/courses/30/lessons/12947)
 
+```java
+class Solution {
+    public boolean solution(int x) {
+        String s = x + "";
+        int sum = 0;
+        for(int i = 0; i < s.length(); i++){
+            sum+= s.charAt(i)-'0';
+        }
+        if(x % sum == 0) return true;
+        else return false;
+    }
+}
+```
+
 
 
 ##### [핸드폰 번호 가리기](https://programmers.co.kr/learn/courses/30/lessons/12948)

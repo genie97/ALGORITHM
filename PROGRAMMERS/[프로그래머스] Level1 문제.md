@@ -313,7 +313,7 @@ class Solution {
         if(list.size() == 0){
             answer = new int[1];
             answer[0] = -1;
-            return answer;
+            return answe자r;
         }
         
         answer = new int[list.size()];
@@ -630,6 +630,23 @@ public class Solution {
 
 
 ##### [자연수 뒤집어 배열로 만들기](https://programmers.co.kr/learn/courses/30/lessons/12932)
+
+```java
+class Solution {
+    public int[] solution(long n) {
+        int[] answer = {};
+        StringBuilder sb = new StringBuilder((n+""));
+        String s = sb.reverse().toString();
+        
+        answer = new int[s.length()];
+        for(int i = 0; i < s.length(); i++){
+            answer[i] = s.charAt(i)-'0';
+        }
+        
+        return answer;
+    }
+}
+```
 
 
 

@@ -518,6 +518,36 @@ class Solution {
 
 ##### [시저 암호](https://programmers.co.kr/learn/courses/30/lessons/12926)
 
+```java
+class Solution {
+    
+    public String solution(String s, int n) {
+        String answer = "";
+        for(int i = 0; i < s.length(); i++){
+            char ch = s.charAt(i);
+                        
+            if('A' <= ch && ch <= 'Z'){
+                int nch = (int)(ch - 'A' + n);
+                nch %= 26;
+                ch = (char)(nch + 'A');
+                answer += ch;
+            
+            } else if('a' <= ch && ch <= 'z') {
+                int nch = (int)(ch - 'a' + n);
+                nch %= 26;
+                ch =  (char)(nch + 'a');
+                answer += ch;
+            
+            } else{
+                answer += " ";
+            }
+           
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [내적](https://programmers.co.kr/learn/courses/30/lessons/70128)

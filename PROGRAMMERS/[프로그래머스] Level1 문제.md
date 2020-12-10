@@ -675,6 +675,21 @@ class Solution {
 
 ##### [정수 제곱근 판별](https://programmers.co.kr/learn/courses/30/lessons/12934)
 
+```java
+class Solution {
+    public long solution(long n) {
+        long answer = 0;
+        long sqrt_n = (long)(Math.sqrt(n));
+        if(n != sqrt_n * sqrt_n)
+            return -1;
+        
+        answer = (sqrt_n+1) * (sqrt_n+1);
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [제일 작은 수 제거하기](https://programmers.co.kr/learn/courses/30/lessons/12935)

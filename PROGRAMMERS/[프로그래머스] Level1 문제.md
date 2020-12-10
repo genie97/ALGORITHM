@@ -275,6 +275,24 @@ class Solution {
 
 ##### [문자열 내림차순으로 배치하기](https://programmers.co.kr/learn/courses/30/lessons/12917)
 
+```java
+import java.util.*;
+
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        char[] strArr = s.toCharArray();
+        Arrays.sort(strArr);
+    
+        for(int i = strArr.length-1; i >= 0; i--){
+            answer += strArr[i];
+        }
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [문자열 다루기 기본](https://programmers.co.kr/learn/courses/30/lessons/12918)

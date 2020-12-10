@@ -109,6 +109,24 @@ vector<int> solution(vector<int> array, vector<vector<int>> commands) {
 
 ##### [2016년](https://programmers.co.kr/learn/courses/30/lessons/12901)
 
+```java
+class Solution {
+    static int[] month_day = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static String[] month = {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
+    
+    public String solution(int a, int b) {
+        int day = 0;
+        
+        for(int i = 1; i < a; i++){
+            day += month_day[i-1];
+        }
+        day += b;
+        
+        return month[(day-1)%7];
+    }
+}
+```
+
 
 
 ##### [가운데 글자 가져오기](https://programmers.co.kr/learn/courses/30/lessons/12903)

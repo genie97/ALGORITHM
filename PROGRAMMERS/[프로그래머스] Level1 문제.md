@@ -611,6 +611,22 @@ class Solution {
 
 ##### [자릿수 더하기](https://programmers.co.kr/learn/courses/30/lessons/12931)
 
+```java
+import java.util.*;
+
+public class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        
+        String s = n + "";
+        for(int i = 0; i < s.length(); i++){
+            answer+= (s.charAt(i) - '0'); 
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [자연수 뒤집어 배열로 만들기](https://programmers.co.kr/learn/courses/30/lessons/12932)

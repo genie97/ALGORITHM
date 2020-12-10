@@ -163,6 +163,39 @@ public class Solution {
 
 ##### [나누어 떨어지는 숫자 배열](https://programmers.co.kr/learn/courses/30/lessons/12910)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr, int divisor) {
+        int[] answer = {};
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] % divisor == 0)
+                list.add(arr[i]);
+        }
+        
+        if(list.size() == 0){
+            answer = new int[1];
+            answer[0] = -1;
+            return answer;
+        }
+        
+        answer = new int[list.size()];
+        
+        for(int i = 0; i < list.size(); i++){
+            answer[i] = list.get(i);
+        }
+        
+        Arrays.sort(answer);
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [두 정수 사이의 합](https://programmers.co.kr/learn/courses/30/lessons/12912)

@@ -725,6 +725,17 @@ class Solution {
 
 ##### [짝수와 홀수](https://programmers.co.kr/learn/courses/30/lessons/12937)
 
+```java
+class Solution {
+    public String solution(int num) {
+        if(num % 2 == 0)
+            return "Even";
+        else 
+            return "Odd";
+    }
+}
+```
+
 
 
 ##### [키패드 누르기](https://programmers.co.kr/learn/courses/30/lessons/67256)

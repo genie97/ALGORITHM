@@ -652,6 +652,25 @@ class Solution {
 
 ##### [정수 내림차순으로 배치하기](https://programmers.co.kr/learn/courses/30/lessons/12933)
 
+```java
+import java.util.*;
+
+class Solution {
+    public long solution(long n) {
+        long answer = 0;
+        char[] arr = (n+"").toCharArray();
+        
+        Arrays.sort(arr);
+        String s = "";
+        for(int i = arr.length-1; i >=0; i--){
+            s += arr[i];
+        }
+        answer = Long.parseLong(s);
+        return answer;
+    }
+}
+```
+
 
 
 ##### [정수 제곱근 판별](https://programmers.co.kr/learn/courses/30/lessons/12934)

@@ -766,6 +766,32 @@ class Solution {
 
 ##### [콜라츠 추측](https://programmers.co.kr/learn/courses/30/lessons/12943)
 
+```java
+class Solution {
+    public int solution(int num) {
+        int answer = 0;
+        long n = (long) num;
+        
+        while(answer++ < 500){
+            if(n == 1) 
+                break;
+            
+            if(n % 2 == 0){
+                n /= 2;
+            } else {
+                n *= 3;
+                n += 1;
+            }
+        }
+        
+        if(n != 1)
+            return -1;
+        else 
+            return answer-1;
+    }
+}
+```
+
 
 
 ##### [평균 구하기](https://programmers.co.kr/learn/courses/30/lessons/12944)

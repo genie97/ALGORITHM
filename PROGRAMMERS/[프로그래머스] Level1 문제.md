@@ -558,6 +558,28 @@ class Solution {
 
 ##### [약수의 합](https://programmers.co.kr/learn/courses/30/lessons/12928)
 
+```java
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        
+        // 0의 약수는 없다
+        if(n == 0)
+            return 0;
+        
+        for(int i = 1; i <= (int)(Math.sqrt(n)); i++){
+            if(n % i == 0){
+                answer += i;  
+                if(i != (n/i)){
+                    answer += (n/i);    
+                } 
+            }
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [이상한 문자 만들기](https://programmers.co.kr/learn/courses/30/lessons/12930)

@@ -542,6 +542,18 @@ class Solution {
 
 ##### [내적](https://programmers.co.kr/learn/courses/30/lessons/70128)
 
+```java
+class Solution {
+    public int solution(int[] a, int[] b) {
+        int answer = 0;
+        for(int i = 0; i < a.length; i++){
+            answer += (a[i] * b[i]);
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [약수의 합](https://programmers.co.kr/learn/courses/30/lessons/12928)

@@ -105,6 +105,53 @@ vector<int> solution(vector<int> array, vector<vector<int>> commands) {
 
 ##### [체육복](https://programmers.co.kr/learn/courses/30/lessons/42862)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int answer = 0;
+        Map<Integer, Boolean> clothes = new TreeMap<>();
+        Set<Integer> lost_p = new TreeSet<>();
+        
+        // 잃어버린 사람들 번호
+        for(int i = 0; i < lost.length; i++){
+            lost_p.add(lost[i]);
+        }
+        
+        // 잃어버린 사람들이 여벌 옷을 가져온 목록에도 있으면 제거
+        for(int i = 0; i < reserve.length; i++){
+            if(lost_p.contains(reserve[i])){
+                lost_p.remove(reserve[i]);
+                continue;
+            }
+            clothes.put(reserve[i], false);
+        }
+        
+        int lost_cnt = lost_p.size();
+        
+        ArrayList<Integer> lost_list = new ArrayList<>(lost_p);
+        
+        for(int i = 0; i < lost_list.size(); i++){
+            int forward = lost_list.get(i)-1;
+            int backward = lost_list.get(i)+1;
+            if(clothes.containsKey(forward) && !clothes.get(forward)){
+                clothes.put(forward, true);
+                lost_cnt--;
+                continue;
+            }
+            if(clothes.containsKey(backward) && !clothes.get(backward)){
+                clothes.put(backward, true);
+                lost_cnt--;
+                continue;
+            }
+        }
+        answer = n - lost_cnt;
+        return answer;
+    }
+}
+```
+
 
 
 ##### [2016년](https://programmers.co.kr/learn/courses/30/lessons/12901)

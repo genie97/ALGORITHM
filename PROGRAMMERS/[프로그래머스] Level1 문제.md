@@ -72,6 +72,47 @@ class Solution {
 
 ##### [모의고사](https://programmers.co.kr/learn/courses/30/lessons/42840)
 
+```java
+import java.util.*;
+
+class Solution {
+    static int[] A = {1, 2, 3, 4, 5};
+    static int[] B = {2, 1, 2, 3, 2, 4, 2, 5};
+    static int[] C = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+    
+    public int[] solution(int[] answers) {
+        
+        int[] cnt = new int[3];
+        
+        for(int i = 0; i < answers.length; i++){
+            if(answers[i] == A[i%5])
+                cnt[0]++;
+        }
+        
+        for(int i = 0; i < answers.length; i++){
+            if(answers[i] == B[i%8])
+                cnt[1]++;
+        }
+        
+        for(int i = 0; i < answers.length; i++){
+            if(answers[i] == C[i%10])
+                cnt[2]++;
+        }
+        
+        int max = Math.max(cnt[0], Math.max(cnt[1], cnt[2]));
+                
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i = 0; i < cnt.length; i++){
+           if(cnt[i] == max){
+               list.add(i+1);
+           }
+        }
+        
+        return list.stream().mapToInt(i -> i.intValue()).toArray();
+    }
+}
+```
+
 
 
 ##### [K번째수](https://programmers.co.kr/learn/courses/30/lessons/42748)

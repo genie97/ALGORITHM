@@ -815,6 +815,57 @@ class Solution {
 
 ##### [키패드 누르기](https://programmers.co.kr/learn/courses/30/lessons/67256)
 
+```java
+class Solution {
+    static int[][] pad = {{3, 1}, {0, 0}, {0, 1}, {0, 2},
+                          {1, 0}, {1, 1}, {1, 2}, 
+                          {2, 0}, {2, 1}, {2, 2}};
+    
+    public String solution(int[] numbers, String hand) {
+        String answer = "";
+        int rcx = 3, rcy = 0;
+        int lcx = 3, lcy = 2;
+        for(int i = 0; i < numbers.length; i++){
+            if(numbers[i] == 1 || numbers[i] == 4 || numbers[i] == 7){
+                answer += "L";
+                lcx = pad[numbers[i]][0];
+                lcy = pad[numbers[i]][1];
+            } else if (numbers[i] == 3 || numbers[i] == 6 || numbers[i] == 9) {
+                 answer += "R";
+                 rcx = pad[numbers[i]][0];
+                 rcy = pad[numbers[i]][1];
+            } else {
+                int ldiff = Math.abs(lcx - pad[numbers[i]][0]) +  Math.abs(lcy - pad[numbers[i]][1]);
+                
+                int rdiff = Math.abs(rcx - pad[numbers[i]][0]) +  Math.abs(rcy - pad[numbers[i]][1]);
+                if(ldiff <= rdiff){
+                    if(ldiff == rdiff){
+                        if(hand.equals("right")){
+                            answer += "R";
+                            rcx = pad[numbers[i]][0];
+                            rcy = pad[numbers[i]][1];
+                        } else{
+                            answer += "L";
+                            lcx = pad[numbers[i]][0];
+                            lcy = pad[numbers[i]][1];
+                        }
+                    } else {
+                        answer += "L";
+                        lcx = pad[numbers[i]][0];
+                        lcy = pad[numbers[i]][1];
+                    }
+                } else{
+                    answer += "R";
+                    rcx = pad[numbers[i]][0];
+                    rcy = pad[numbers[i]][1];
+                }
+            }
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [최대공약수와 최소공배수](https://programmers.co.kr/learn/courses/30/lessons/12940)

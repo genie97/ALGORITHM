@@ -915,6 +915,27 @@ public class Solution {
 
 ##### [예산](https://programmers.co.kr/learn/courses/30/lessons/12982)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int[] d, int budget) {
+        int answer = 0;
+        Arrays.sort(d);
+        int cnt = 0; 
+        int sum = 0;
+        for(int i = 0; i < d.length; i++){
+            if(sum + d[i] <= budget){
+                cnt++;
+                sum+=d[i];
+            } else
+                break;
+        }
+        return cnt;
+    }
+}
+```
+
 
 
 ##### [[1차\] 비밀지도](https://programmers.co.kr/learn/courses/30/lessons/17681)

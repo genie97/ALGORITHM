@@ -31,6 +31,40 @@ class Solution {
 
 ##### [크레인 인형뽑기 게임](https://programmers.co.kr/learn/courses/30/lessons/64061)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int[][] board, int[] moves) {
+        int answer = 0;
+        Stack<Integer> s = new Stack<>();
+    
+        for(int i = 0; i < moves.length; i++){
+            int r = moves[i] - 1;
+            for(int c = 0; c < board[r].length; c++){
+                if(board[c][r] > 0) {
+                    s.add(board[c][r]);
+                    board[c][r] = 0;
+                    break;
+                }
+            }
+            if(s.size() >= 2){
+                int a = s.pop();
+                int b = s.pop();
+                if(a == b) {
+                    answer+=2;
+                } else{
+                    s.add(b);
+                    s.add(a);
+                }
+            }
+        }
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [완주하지 못한 선수](https://programmers.co.kr/learn/courses/30/lessons/42576)

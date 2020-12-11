@@ -1100,6 +1100,46 @@ class Solution {
 
 ##### [실패율](https://programmers.co.kr/learn/courses/30/lessons/42889)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(int N, int[] stages) {
+        int[] answer = new int[N];
+        ArrayList<double[]> list = new ArrayList<>();
+        
+        for(int i = 1; i <= N; i++){
+            int total = 0;
+            int failed = 0;
+            
+            for(int j = 0; j < stages.length; j++){
+                if(stages[j] == i)
+                    failed++;
+                if(stages[j] >= i)
+                    total++;
+            }        
+            if(total == 0){
+                list.add(new double[]{i, 0.0});
+            } else {
+                list.add(new double[]{i, (double)(failed)/total});
+            } 
+        }
+        
+        Collections.sort(list, new Comparator<>(){
+            public int compare(double[] a, double[] b){
+                return Double.compare(b[1], a[1]);
+            }
+        });
+        
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i)[1]);
+            answer[i] = (int)(list.get(i)[0]);
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [[1차\] 다트 게임](https://programmers.co.kr/learn/courses/30/lessons/17682)

@@ -1066,6 +1066,36 @@ class Solution {
 
 ##### [[1차\] 비밀지도](https://programmers.co.kr/learn/courses/30/lessons/17681)
 
+```java
+class Solution {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+        for(int i = 0; i < arr1.length; i++){
+            arr1[i] |= arr2[i];
+        }
+        for(int i = 0; i < arr1.length; i++){
+            answer[i] = toBinary(arr1[i], n);
+        }
+        return answer;
+    }
+    static String toBinary(int num, int n){
+        String result = "";
+        while(num > 0){
+            int r = num % 2;
+            if(r == 0)
+                result = " " + result;
+            else
+                result = "#" + result;
+            num /= 2;
+        }
+        while(result.length() < n){
+            result = " " + result;
+        }
+        return result;
+    }
+}
+```
+
 
 
 ##### [실패율](https://programmers.co.kr/learn/courses/30/lessons/42889)

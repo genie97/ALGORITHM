@@ -1144,6 +1144,71 @@ class Solution {
 
 ##### [[1차\] 다트 게임](https://programmers.co.kr/learn/courses/30/lessons/17682)
 
+```java
+import java.util.*;
+
+public class test1 {
+	public static void main(String[] args) {
+		String s = "1D#2S*3S";
+
+		System.out.println(solution(s));
+	}
+
+	public static int solution(String dartResult) {
+		int answer = 0;
+		int cur = 0;
+		int prev = Integer.MIN_VALUE;
+
+		for (int i = 0; i < dartResult.length(); i++) {
+			char ch = dartResult.charAt(i);
+			if (Character.isDigit(ch)) {
+				if (ch == '1') {
+					if (i + 1 < dartResult.length() && dartResult.charAt(i + 1) == '0') {
+						i++;
+						cur = 10;
+					} else {
+						cur = 1;
+					}
+				} else {
+					cur = ch - '0';
+				}
+			} else if (Character.isAlphabetic(ch)) {
+				if (ch == 'D') {
+					cur = (cur * cur);
+				} else if (ch == 'T') {
+					cur = (cur * cur * cur);
+				}
+
+				char nch = '.';
+				if (i + 1 < dartResult.length()) {
+					nch = dartResult.charAt(i + 1);
+				}
+
+				if (nch == '#' || nch == '*') {
+					if (nch == '#') {
+						cur *= -1;
+					} else {
+						if (prev == Integer.MIN_VALUE) {
+							cur *= 2;
+						} else {
+							answer -= prev;
+							prev *= 2;
+							answer += prev;
+							cur *= 2;
+						}
+					}
+				}
+				answer += cur;
+				prev = cur;
+
+			}
+		}
+
+		return answer;
+	}
+}
+```
+
 
 
 <hr>

@@ -487,6 +487,33 @@ class Solution {
 }
 ```
 
+```java
+// bitCount로 세기
+class Solution {
+    public int solution(int n) {
+        int cnt = Integer.bitCount(n);
+        
+        while(true){
+            n++;
+            if(cnt == Integer.bitCount(n)) 
+                break;
+        }
+        return n;
+    }
+}
+```
+
+```java
+// 비트 연산
+class Solution {
+    public int solution(int n) {
+        int postPattern = n & -n;
+        int smallPattern = ((n ^ (n + postPattern)) / postPattern) >> 2;
+        return (n + postPattern) | smallPattern;
+    }
+}
+```
+
 
 
 ##### [땅따먹기](https://programmers.co.kr/learn/courses/30/lessons/12913)

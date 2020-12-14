@@ -480,6 +480,25 @@ class Solution {
 
 ##### [최댓값과 최솟값](https://programmers.co.kr/learn/courses/30/lessons/12939)
 
+```java
+import java.util.*;
+
+class Solution {
+    public String solution(String s) {
+        StringTokenizer st = new StringTokenizer(s);
+        int minV = Integer.MAX_VALUE;
+        int maxV = Integer.MIN_VALUE;
+        while(st.hasMoreTokens()){
+            int n = Integer.parseInt(st.nextToken());
+            maxV = Math.max(maxV, n);
+            minV = Math.min(minV, n);
+        }
+        
+        return minV + " " + maxV;
+    }
+}
+```
+
 
 
 ##### [최솟값 만들기](https://programmers.co.kr/learn/courses/30/lessons/12941)

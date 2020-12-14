@@ -460,6 +460,33 @@ class Solution {
 
 ##### [다음 큰 숫자](https://programmers.co.kr/learn/courses/30/lessons/12911)
 
+```java
+class Solution {
+    public int solution(int n) {
+        String bn = Integer.toBinaryString(n);
+        int cnt = 0;
+        for(int i = 0; i < bn.length(); i++){
+            if(bn.charAt(i) == '1'){
+                cnt++;        
+            }
+        }
+        while(true){
+            n++;
+            String nbn = Integer.toBinaryString(n);
+            int ncnt = 0;
+            for(int i = 0; i < nbn.length(); i++){
+                if(nbn.charAt(i) == '1'){
+                    ncnt++;        
+                }
+            }
+            if(cnt == ncnt) 
+                break;
+        }ekdma
+        return n;
+    }
+}
+```
+
 
 
 ##### [땅따먹기](https://programmers.co.kr/learn/courses/30/lessons/12913)

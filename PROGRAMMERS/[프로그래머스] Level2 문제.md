@@ -317,6 +317,68 @@ string solution(vector<int> numbers) {
 
 ##### [소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/42839)
 
+```java
+import java.util.*;
+
+class Solution {
+    static Set<Integer> s;
+	static boolean[] selected;
+
+	static boolean[] prime;
+
+	static void isPrime() {
+		for (int i = 2; i < prime.length; i++) {
+			prime[i] = true;
+		}
+		for (int i = 2; i < prime.length; i++) {
+			if (!prime[i])
+				continue;
+
+			for (int j = 2 * i; j < prime.length; j += i) {
+				prime[j] = false;
+			}
+		}
+	}
+
+	
+
+	public int solution(String numbers) {
+		int total = (int) Math.pow(10, numbers.length());
+		prime = new boolean[total];
+		isPrime();
+		s = new HashSet<>();
+
+		for (int i = 0; i < numbers.length(); i++) {
+			selected = new boolean[numbers.length()];
+			dfs(0, i + 1, numbers, "");
+		}
+
+		return s.size();
+	}
+
+	static void dfs(int cnt, int len, String numbers, String value) {
+		if (cnt == len) {
+			int v = Integer.parseInt(value);
+			if (prime[v]) {
+				s.add(v);
+			}
+			return;
+		}
+
+		for (int i = 0; i < numbers.length(); i++) {
+			if (selected[i])
+				continue;
+			selected[i] = true;
+			String origin = value;
+			value += numbers.charAt(i);
+			dfs(cnt + 1, len, numbers, value);
+			value = origin;
+			selected[i] = false;
+		}
+	}
+}
+```
+
 
 
 ##### [조이스틱](https://programmers.co.kr/learn/courses/30/lessons/42860)

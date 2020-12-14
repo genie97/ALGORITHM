@@ -546,6 +546,35 @@ class Solution {
 
 ##### [JadenCase 문자열 만들기](https://programmers.co.kr/learn/courses/30/lessons/12951)
 
+```java
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+
+		boolean isFirst = true;
+		for (int i = 0; i < s.length(); i++) {
+			char ch = s.charAt(i);
+
+			if (isFirst && Character.isAlphabetic(ch)) {
+				ch = Character.toUpperCase(ch);
+				isFirst = false;
+			} else {
+				if (Character.isAlphabetic(ch)) {
+					ch = Character.toLowerCase(ch);
+				} else if (ch == ' ') {
+					isFirst = true;
+					answer += ch;
+					continue;
+				}
+			}
+			answer += ch;
+			isFirst = false;
+		}
+        return answer;
+    }
+}
+```
+
 
 
 ##### [N개의 최소공배수](https://programmers.co.kr/learn/courses/30/lessons/12953)

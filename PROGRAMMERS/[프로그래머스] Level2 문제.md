@@ -488,6 +488,32 @@ class Solution {
 
 ##### [피보나치 수](https://programmers.co.kr/learn/courses/30/lessons/12945)
 
+```java
+class Solution {
+    static int[] dp;
+    public int solution(int n) {
+        int answer = 0;
+        dp = new int[n + 1];
+
+        for(int i = 0; i < dp.length; i++){
+            dp[i] = -1;
+        }
+        
+        dp[0] = 0;
+        dp[1] = 1;
+        fibo(n);
+        
+        answer = dp[n] % 1234567;
+        return answer;
+    }
+    static int fibo(int n){
+        if(dp[n] != -1) 
+            return dp[n] % 1234567;
+        return dp[n] = (fibo(n-1) + fibo(n-2)) % 1234567;
+    }
+}
+```
+
 
 
 ##### [수식 최대화](https://programmers.co.kr/learn/courses/30/lessons/67257)

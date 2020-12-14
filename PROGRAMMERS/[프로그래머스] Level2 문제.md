@@ -550,25 +550,13 @@ class Solution {
 class Solution {
     public String solution(String s) {
         String answer = "";
-
+        s = s.toLowerCase();
+        
 		boolean isFirst = true;
 		for (int i = 0; i < s.length(); i++) {
 			char ch = s.charAt(i);
-
-			if (isFirst && Character.isAlphabetic(ch)) {
-				ch = Character.toUpperCase(ch);
-				isFirst = false;
-			} else {
-				if (Character.isAlphabetic(ch)) {
-					ch = Character.toLowerCase(ch);
-				} else if (ch == ' ') {
-					isFirst = true;
-					answer += ch;
-					continue;
-				}
-			}
-			answer += ch;
-			isFirst = false;
+            answer += isFirst ? Character.toUpperCase(ch) : ch;
+            isFirst = (ch == ' ') ? true : false;
 		}
         return answer;
     }

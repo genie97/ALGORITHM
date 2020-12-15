@@ -189,6 +189,40 @@ class Solution {
 }
 ```
 
+```java
+class Solution {
+    public int[] solution(int n) {
+        int[] answer = new int[(n * (n + 1)) / 2];
+		int[][] map = new int[n][n];
+
+		int x = -1, y = 0;
+		int num = 1;
+		for (int i = 0; i < n; i++) { // 이동이 총 n번
+			for (int j = i; j < n; j++) {
+				if (i % 3 == 0) { // 세로 이동
+					++x; 
+				} else if (i % 3 == 1) { // 가로 이동
+					++y;
+				} else { // 대각선 이동
+					--x;
+					--y;
+				}
+				map[x][y] = num++;
+			}
+		}
+
+		int idx = 0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j <= i; j++) {
+				answer[idx++] = map[i][j];
+			}
+		}
+
+		return answer;
+    }
+}
+```
+
 
 
 ##### [문자열 압축](https://programmers.co.kr/learn/courses/30/lessons/60057)

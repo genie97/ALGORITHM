@@ -138,6 +138,57 @@ vector<int> solution(int m, int n, vector<vector<int>> picture) {
 
 ##### [삼각 달팽이](https://programmers.co.kr/learn/courses/30/lessons/68645)
 
+```java
+class Solution {
+    public int[] solution(int n) {
+        int size = n * (n + 1) / 2;
+		int[] answer = new int[size];
+		int len = n;
+		int cx = -1;
+		int cy = 0;
+
+		int[][] map = new int[n][n];
+
+		outer: for (int num = 1; num <= size;) {
+
+			for (int i = cx + 1; i <= cx + len; i++) {
+				map[i][cy] = num++;
+				if (num > size)
+					break outer;
+			}
+			cx += len;
+
+			len--;
+
+			for (int i = cy + 1; i <= cy + len; i++) {
+				map[cx][i] = num++;
+				if (num > size)
+					break outer;
+			}
+			cy += len;
+			len--;
+
+			for (int i = cx - 1, j = cy - 1; i >= cx - len && j >= cy - len; i--, j--) {
+				map[i][j] = num++;
+				if (num > size)
+					break outer;
+			}
+			cx -= len;
+			cy -= len;
+			len--;
+		}
+
+		int idx = 0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j <= i; j++) {
+				answer[idx++] = map[i][j];
+			}
+		}
+		return answer;
+    }
+}
+```
+
 
 
 ##### [문자열 압축](https://programmers.co.kr/learn/courses/30/lessons/60057)

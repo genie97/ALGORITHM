@@ -793,6 +793,26 @@ class Solution {
 
 ##### [N개의 최소공배수](https://programmers.co.kr/learn/courses/30/lessons/12953)
 
+```java
+class Solution {
+    public int solution(int[] arr) {
+        int answer = arr[0];
+        
+        for(int i = 1; i < arr.length; i++){
+            int gcd_n = gcd(answer, arr[i]);
+            answer = gcd_n * (answer / gcd_n) * (arr[i] / gcd_n);
+        }
+        
+        return answer;
+    }
+    static int gcd(int a, int b){
+        if(b == 0)
+            return a;
+        return gcd(b, a % b);
+    }
+}
+```
+
 
 
 ##### [짝지어 제거하기](https://programmers.co.kr/learn/courses/30/lessons/12973)

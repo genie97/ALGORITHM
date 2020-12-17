@@ -801,6 +801,46 @@ class Solution {
 
 ##### [소수 만들기](https://programmers.co.kr/learn/courses/30/lessons/12977)
 
+```java
+class Solution {
+    static boolean[] isSelected;
+    static int ans;
+    
+    public int solution(int[] nums) {
+        ans = 0;
+        isSelected = new boolean[nums.length];
+        
+        dfs(0, 0, 0, nums);
+        
+        return ans;
+    }
+
+    static boolean isPrime(int num){
+        if(num == 1) return false;
+        
+        for(int i = 2; i <= Math.sqrt(num); i++){
+            if(num % i == 0) return false;
+        }
+        return true;
+    }
+    
+    static void dfs(int cnt, int idx, int sum, int[] nums){
+        if(cnt == 3){
+            if(isPrime(sum)){
+                ans++;
+            }
+            return;
+        }
+        for(int i = idx; i < nums.length; i++){
+            if(isSelected[i]) continue;
+            isSelected[i] = true;
+            dfs(cnt + 1, i, sum + nums[i], nums);
+            isSelected[i] = false;    
+        }
+    }
+}
+```
+
 
 
 ##### [점프와 순간 이동](https://programmers.co.kr/learn/courses/30/lessons/12980)

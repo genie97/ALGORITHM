@@ -1176,6 +1176,49 @@ class Solution {
 
 ##### [[3차\] 압축](https://programmers.co.kr/learn/courses/30/lessons/17684)
 
+```java
+// 길이가 1인 모든 단어를 포함하도록 사전을 초기화
+// 사전에서 현재 입력과 일치하는 가장 긴 문자열 W를 찾는다
+// W에 해당하는 사전의 색인 번호를 출력하고 입력에서 W 제거
+// 입력에서 처리되지 않은 다음 글자가 남아있다면(C) W+C에 해당하는 단어를 사전에 등록
+// 다시 2단계로 돌아감
+import java.util.*;
+
+class Solution {
+    public int[] solution(String msg) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+		Map<String, Integer> dict = new HashMap<>();
+		int idx = 1;
+		for (int i = 0; i < 26; i++) {
+			dict.put((char) (i + 'A') + "", idx++);
+		}
+		String prev = "";
+		String cur = "";
+		for (int pos = 0; pos < msg.length();) {
+			while (true) {
+				if (pos >= msg.length())
+					break;
+				prev = cur;
+				cur += msg.charAt(pos++);
+				if (!dict.containsKey(cur)) {
+					list.add(dict.get(prev));
+					dict.put(cur, idx++);
+					cur = "";
+					pos--;
+					break;
+				}
+			}
+		}
+
+		if (dict.containsKey(cur)) {
+			list.add(dict.get(cur));
+		}
+		return list.stream().mapToInt(i -> i.intValue()).toArray();
+    }
+}
+```
+
 
 
 ##### [[3차\] 파일명 정렬](https://programmers.co.kr/learn/courses/30/lessons/17686)

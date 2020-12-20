@@ -42,6 +42,69 @@ class Solution {
 }
 ```
 
+```java
+import java.util.*;
+
+class Solution {
+    static class Truck {
+        int weight;
+        int move;
+        
+        public Truck(int weight){
+            this.weight = weight;
+            this.move = 1;
+        }
+        
+        public void moving(){
+            this.move++;
+        }
+        
+    }
+    
+    public int solution(int bridge_length, int weight, int[] truck_weights) {
+        Queue<Truck> waitQ = new LinkedList<>();
+        Queue<Truck> arriveQ = new LinkedList<>();
+        
+        for(int w : truck_weights){
+            waitQ.offer(new Truck(w));
+        }
+        
+        int time = 0;
+        int cur_weight = 0;
+        
+        while(!waitQ.isEmpty() || !arriveQ.isEmpty()){
+            time++;
+            // 다리를 건너고 있는 트럭이 없는 경우 추가
+            if(arriveQ.isEmpty()){
+                Truck t = waitQ.poll();
+                cur_weight += t.weight;
+                arriveQ.offer(t);
+                continue;
+            }
+            // 다리를 건너고 있는 트럭이 있는 경우 이동 시키기
+            for(Truck t : arriveQ){
+                t.moving();
+            }
+            
+            // 다리를 다 건넌 트럭이 있다면 제외
+            if(arriveQ.peek().move > bridge_length){
+                Truck t = arriveQ.poll();
+                cur_weight -= t.weight;
+            }
+            
+            // 다리를 더 건널 수 있는지 확인
+            if(!waitQ.isEmpty() && cur_weight + waitQ.peek().weight <= weight){
+                Truck t = waitQ.poll();
+                cur_weight += t.weight;
+                arriveQ.offer(t);
+            }
+        }   
+        
+        return time;
+    }
+}
+```
+
 
 
 ##### [주식가격](https://programmers.co.kr/learn/courses/30/lessons/42584)

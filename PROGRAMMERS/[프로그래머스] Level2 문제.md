@@ -2,6 +2,46 @@
 
 ##### [다리를 지나는 트럭](https://programmers.co.kr/learn/courses/30/lessons/42583)
 
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int bridge_length, int weight, int[] truck_weights) {
+        int answer = -1;
+		Queue<int[]> q = new LinkedList<>();
+		int idx = 0;
+
+		while (true) {
+			answer++;
+
+			Queue<int[]> tmp = new LinkedList<>();
+			int sum = 0;
+
+			while (!q.isEmpty()) {
+				int[] cur = q.poll();
+				tmp.add(new int[] { cur[0], cur[1] + 1 });
+				sum += cur[0];
+			}
+			q = tmp;
+
+			if (idx == truck_weights.length && q.isEmpty())
+				break;
+
+			if (!q.isEmpty() && q.peek()[1] == bridge_length) {
+				sum -= q.peek()[0];
+				q.poll();
+			}
+
+			if (idx < truck_weights.length && (q.isEmpty() || sum + truck_weights[idx] <= weight)) {
+				q.add(new int[] { truck_weights[idx++], 0 });
+			}
+
+		}
+		return answer;
+    }
+}
+```
+
 
 
 ##### [주식가격](https://programmers.co.kr/learn/courses/30/lessons/42584)

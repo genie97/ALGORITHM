@@ -29,6 +29,54 @@ class Solution {
 
 ##### [스킬트리](https://programmers.co.kr/learn/courses/30/lessons/49993)
 
+```java
+class Solution {
+    static int[] skills_order = new int[26];
+    public int solution(String skill, String[] skill_trees) {
+        int answer = 0;
+        for(int i = 0; i < skill.length(); i++){
+            skills_order[skill.charAt(i)-'A'] = i + 1;
+        }
+        for(int i = 0; i < skill_trees.length; i++){
+            skill = skill_trees[i];
+            int prev = -1;
+            int cur = 0;
+            boolean isPossible = true;
+            for(int j = 0; j < skill.length(); j++){
+                if(skills_order[skill.charAt(j)-'A'] == 0) 
+                    continue;
+                prev = cur;
+                cur = skills_order[skill.charAt(j)-'A'];
+                if(prev + 1 != cur)
+                    isPossible = false;
+            }
+            if(isPossible) 
+                answer++;
+        }
+        return answer;
+    }
+}
+```
+
+```java
+// 정규식 사용하는 법
+// [^abc] : abc를 제외한 나머지 글자
+// 시간적으로는 위에 코드가 더 빠르지만 정규식 개념을 알아두자!
+
+class Solution {
+    public int solution(String skill, String[] skill_trees) {
+        int answer = 0;
+       
+        for(int i = 0; i < skill_trees.length; i++){
+            skill_trees[i] = skill_trees[i].replaceAll("[^" + skill + "]", "");
+            if(skill.indexOf(skill_trees[i]) == 0) 
+                answer++;
+        }
+        return answer;
+    }
+}
+```
+
 
 
 ##### [기능개발](https://programmers.co.kr/learn/courses/30/lessons/42586)

@@ -768,6 +768,32 @@ class Solution {
 
 ##### [위장](https://programmers.co.kr/learn/courses/30/lessons/42578)
 
+```java
+import java.util.*;
+
+class Solution {
+    
+    public int solution(String[][] clothes) {
+		Map<String, Integer>map = new HashMap<>();
+
+		for (int i = 0; i < clothes.length; i++) {
+			if (!map.containsKey(clothes[i][1])) {
+				map.put(clothes[i][1], 1);
+			} else {
+				int v = map.get(clothes[i][1]);
+				map.put(clothes[i][1], v + 1);
+			}
+		}
+        
+        int sum = 1;    
+        for(String key : map.keySet()){
+            sum *= (map.get(key) + 1); // 해당 의상에 대한 옷 종류 + 아예 안입는 경우
+        }
+		return sum-1; // 모든 옷을 안입는 경우는 존재하지 않으므로 -1
+	}
+}
+```
+
 
 
 ##### [타겟 넘버](https://programmers.co.kr/learn/courses/30/lessons/43165)

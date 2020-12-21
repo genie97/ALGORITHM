@@ -184,6 +184,49 @@ class Solution {
 
 ##### [기능개발](https://programmers.co.kr/learn/courses/30/lessons/42586)
 
+```java
+import java.util.*;
+
+class Solution {
+    public static class work {
+		int remains;
+		int speeds;
+
+		work(int remains, int speeds) {
+			this.remains = remains;
+			this.speeds = speeds;
+		}
+
+		public void passedDay() {
+			this.remains -= this.speeds;
+		}
+	}
+    
+    public int[] solution(int[] progresses, int[] speeds) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+		Queue<work> q = new LinkedList<>();
+		for (int i = 0; i < progresses.length; i++) {
+			q.add(new work(100 - progresses[i], speeds[i]));
+		}
+		while (!q.isEmpty()) {
+			for (work w : q) {
+				w.passedDay();
+			}
+			int cnt = 0;
+			while (!q.isEmpty() && q.peek().remains <= 0) {
+				q.poll();
+				cnt++;
+			}
+			if (cnt == 0)
+				continue;
+			list.add(cnt);
+		}
+		return list.stream().mapToInt(i -> i.intValue()).toArray();
+    }
+}
+```
+
 
 
 ##### [멀쩡한 사각형](https://programmers.co.kr/learn/courses/30/lessons/62048)

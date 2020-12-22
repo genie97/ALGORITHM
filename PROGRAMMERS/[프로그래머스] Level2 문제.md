@@ -730,7 +730,45 @@ class Solution {
 
 
 
-##### [H-Index](https://programmers.co.kr/learn/courses/30/lessons/42747)
+##### [H-Index](https://programmers.co.kr/learn/courses/30/lessons/42747) :star:
+
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int[] citations) {
+        Arrays.sort(citations);
+        int h = 0;
+        System.out.println(citations[citations.length-1]);
+        for(h = Math.min(citations[citations.length-1], citations.length); h>=0; h--){
+            int count = 0;
+            for(int num : citations){
+                if(num >= h){
+                    count++;   
+                }
+            }
+            if(count >= h){
+                break;
+            }
+        }
+        return h;
+    }
+}
+```
+
+```java
+public int solution(int[] citations) {
+        Arrays.sort(citations);
+
+        int max = 0;
+        for(int i = citations.length-1; i > -1; i--){
+            int min = (int)Math.min(citations[i], citations.length - i);
+            if(max < min) max = min;
+        }
+
+        return max;
+}
+```
 
 
 
@@ -826,6 +864,27 @@ class Solution {
 
 
 ##### [카펫](https://programmers.co.kr/learn/courses/30/lessons/42842)
+
+```java
+class Solution {
+    public int[] solution(int brown, int yellow) {
+        int[] answer = new int[2];
+        int block = brown + yellow;
+        for(int i =(int)(Math.sqrt(block)); i > 0 ; i--){
+            if(block % i != 0) continue;
+            int nh = i - 2;
+            int nw = (block / i) - 2;
+            if(nw * nh == yellow){
+                answer[0] = nw + 2;
+                answer[1] = nh + 2;
+                break;
+            }
+        }
+        return answer;
+        
+    }
+}
+```
 
 
 

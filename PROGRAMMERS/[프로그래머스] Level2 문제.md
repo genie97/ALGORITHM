@@ -247,11 +247,11 @@ class Solution {
 
 
 
-##### [멀쩡한 사각형](https://programmers.co.kr/learn/courses/30/lessons/62048)
+##### [멀쩡한 사각형](https://programmers.co.kr/learn/courses/30/lessons/62048) :x:
 
 
 
-##### [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12899)
+##### [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12899) :x:
 
 
 
@@ -722,7 +722,7 @@ class Solution {
 
 
 
-##### [조이스틱](https://programmers.co.kr/learn/courses/30/lessons/42860)
+##### [조이스틱](https://programmers.co.kr/learn/courses/30/lessons/42860) :x:
 
 
 
@@ -825,7 +825,7 @@ class Solution {
 
 
 
-##### [구명보트](https://programmers.co.kr/learn/courses/30/lessons/42885)
+##### [구명보트](https://programmers.co.kr/learn/courses/30/lessons/42885) :x:
 
 
 
@@ -913,23 +913,23 @@ class Solution {
 
 
 
-##### [쿼드압축 후 개수 세기](https://programmers.co.kr/learn/courses/30/lessons/68936)
+##### [쿼드압축 후 개수 세기](https://programmers.co.kr/learn/courses/30/lessons/68936) :x:
 
 
 
-##### [가장 큰 정사각형 찾기](https://programmers.co.kr/learn/courses/30/lessons/12905)
+##### [가장 큰 정사각형 찾기](https://programmers.co.kr/learn/courses/30/lessons/12905) :x:
 
 
 
-##### [단체사진 찍기](https://programmers.co.kr/learn/courses/30/lessons/1835)
+##### [단체사진 찍기](https://programmers.co.kr/learn/courses/30/lessons/1835) :x:
+
+ 
+
+##### [튜플](https://programmers.co.kr/learn/courses/30/lessons/64065) :x:
 
 
 
-##### [튜플](https://programmers.co.kr/learn/courses/30/lessons/64065)
-
-
-
-##### [올바른 괄호](https://programmers.co.kr/learn/courses/30/lessons/12909)
+##### [올바른 괄호](https://programmers.co.kr/learn/courses/30/lessons/12909) :x:
 
 
 
@@ -991,19 +991,19 @@ class Solution {
 
 
 
-##### [땅따먹기](https://programmers.co.kr/learn/courses/30/lessons/12913)
+##### [땅따먹기](https://programmers.co.kr/learn/courses/30/lessons/12913) :x:
 
 
 
-##### [폰켓몬](https://programmers.co.kr/learn/courses/30/lessons/1845)
+##### [폰켓몬](https://programmers.co.kr/learn/courses/30/lessons/1845) :x:
 
 
 
-##### [숫자의 표현](https://programmers.co.kr/learn/courses/30/lessons/12924)
+##### [숫자의 표현](https://programmers.co.kr/learn/courses/30/lessons/12924) :x:
 
 
 
-##### [이진 변환 반복하기](https://programmers.co.kr/learn/courses/30/lessons/70129)
+##### [이진 변환 반복하기](https://programmers.co.kr/learn/courses/30/lessons/70129) :x:
 
 
 
@@ -1030,7 +1030,7 @@ class Solution {
 
 
 
-##### [최솟값 만들기](https://programmers.co.kr/learn/courses/30/lessons/12941)
+##### [최솟값 만들기](https://programmers.co.kr/learn/courses/30/lessons/12941) :x:
 
 
 
@@ -1064,7 +1064,7 @@ class Solution {
 
 
 
-##### [수식 최대화](https://programmers.co.kr/learn/courses/30/lessons/67257)
+##### [수식 최대화](https://programmers.co.kr/learn/courses/30/lessons/67257) :x:
 
 
 
@@ -1208,7 +1208,7 @@ class Solution {
 
 
 
-##### [점프와 순간 이동](https://programmers.co.kr/learn/courses/30/lessons/12980)
+##### [점프와 순간 이동](https://programmers.co.kr/learn/courses/30/lessons/12980) :x:
 
 
 
@@ -1240,11 +1240,11 @@ class Solution {
 
 
 
-##### [예상 대진표](https://programmers.co.kr/learn/courses/30/lessons/12985)
+##### [예상 대진표](https://programmers.co.kr/learn/courses/30/lessons/12985) :x:
 
 
 
-##### [[1차\] 뉴스 클러스터링](https://programmers.co.kr/learn/courses/30/lessons/17677)
+##### [[1차\] 뉴스 클러스터링](https://programmers.co.kr/learn/courses/30/lessons/17677) :x:
 
 
 
@@ -1329,19 +1329,19 @@ class Solution {
 
 
 
-##### [[1차\] 캐시](https://programmers.co.kr/learn/courses/30/lessons/17680)
+##### [[1차\] 캐시](https://programmers.co.kr/learn/courses/30/lessons/17680) :x:
 
 
 
-##### [오픈채팅방](https://programmers.co.kr/learn/courses/30/lessons/42888)
+##### [오픈채팅방](https://programmers.co.kr/learn/courses/30/lessons/42888) :x:
 
 
 
-##### [후보키](https://programmers.co.kr/learn/courses/30/lessons/42890)
+##### [후보키](https://programmers.co.kr/learn/courses/30/lessons/42890) :x:
 
 
 
-##### [[3차\] 방금그곡](https://programmers.co.kr/learn/courses/30/lessons/17683)
+##### [[3차\] 방금그곡](https://programmers.co.kr/learn/courses/30/lessons/17683)​ :x:
 
 
 
@@ -1392,11 +1392,11 @@ class Solution {
 
 
 
-##### [[3차\] 파일명 정렬](https://programmers.co.kr/learn/courses/30/lessons/17686)
+##### [[3차\] 파일명 정렬](https://programmers.co.kr/learn/courses/30/lessons/17686) :x:
 
 
 
-##### [[3차\] n진수 게임](https://programmers.co.kr/learn/courses/30/lessons/17687)
+##### [[3차\] n진수 게임](https://programmers.co.kr/learn/courses/30/lessons/17687) :x:
 
 
 

@@ -929,7 +929,22 @@ class Solution {
 
 
 
-##### [올바른 괄호](https://programmers.co.kr/learn/courses/30/lessons/12909) :x:
+##### [올바른 괄호](https://programmers.co.kr/learn/courses/30/lessons/12909) 
+
+```java
+class Solution {
+    boolean solution(String s) {
+        int[] check = new int[1];
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '(') check[0]++;
+            else check[0]--;
+            if(check[0] < 0) return false;
+        }
+        if(check[0] > 0) return false;
+        return true;
+    }
+}
+```
 
 
 

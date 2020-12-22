@@ -1012,6 +1012,22 @@ class Solution {
 
 ##### [폰켓몬](https://programmers.co.kr/learn/courses/30/lessons/1845) :x:
 
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int[] nums) {
+        int answer = 0;
+        Set<Integer> s = new HashSet<>();
+        for(int num : nums){
+            s.add(num);
+        }
+        answer = Math.min((nums.length / 2), s.size());
+        return answer;
+    }
+}
+```
+
 
 
 ##### [숫자의 표현](https://programmers.co.kr/learn/courses/30/lessons/12924) :x:

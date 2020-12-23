@@ -825,7 +825,46 @@ class Solution {
 
 
 
-##### [구명보트](https://programmers.co.kr/learn/courses/30/lessons/42885) :x:
+##### [구명보트](https://programmers.co.kr/learn/courses/30/lessons/42885)
+
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int[] people, int limit) {
+        int answer = 0;
+		int[] w = new int[241];
+
+		int total = 0;
+		for (int i : people) {
+			w[i]++;
+			total++;
+		}
+
+		while (total > 0) {
+			for (int i = 0; i < people.length; i++) {
+				if (w[people[i]] <= 0)
+					continue;
+				w[people[i]]--;
+				total--;
+				int remain = limit - people[i];
+				while (remain >= 40) {
+					if (w[remain] > 0) {
+						w[remain]--;
+						remain -= remain;
+						total--;
+					} else {
+						remain--;
+					}
+				}
+				answer++;
+			}
+		}
+
+		return answer;
+    }
+}
+```
 
 
 
@@ -1010,7 +1049,7 @@ class Solution {
 
 
 
-##### [폰켓몬](https://programmers.co.kr/learn/courses/30/lessons/1845) :x:
+##### [폰켓몬](https://programmers.co.kr/learn/courses/30/lessons/1845)
 
 ```java
 import java.util.*;

@@ -835,32 +835,25 @@ class Solution {
         int answer = 0;
 		int[] w = new int[241];
 
-		int total = 0;
-		for (int i : people) {
+        for (int i : people) {
 			w[i]++;
-			total++;
 		}
-
-		while (total > 0) {
-			for (int i = 0; i < people.length; i++) {
-				if (w[people[i]] <= 0)
-					continue;
-				w[people[i]]--;
-				total--;
-				int remain = limit - people[i];
-				while (remain >= 40) {
-					if (w[remain] > 0) {
-						w[remain]--;
-						remain -= remain;
-						total--;
-					} else {
-						remain--;
-					}
+        for (int i = 0; i < people.length; i++) {
+			if (w[people[i]] <= 0)
+				continue;
+			w[people[i]]--;
+			int remain = limit - people[i];
+			while (remain >= 40) {
+				if (w[remain] > 0) {
+					w[remain]--;
+					break;
+				} else {
+					remain--;
 				}
-				answer++;
 			}
+			answer++;
 		}
-
+        
 		return answer;
     }
 }

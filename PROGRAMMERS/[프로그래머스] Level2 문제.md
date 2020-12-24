@@ -945,7 +945,7 @@ class Solution {
 
 
 
-##### [쿼드압축 후 개수 세기](https://programmers.co.kr/learn/courses/30/lessons/68936) :x:
+##### [쿼드압축 후 개수 세기](https://programmers.co.kr/learn/courses/30/lessons/68936)
 
 
 

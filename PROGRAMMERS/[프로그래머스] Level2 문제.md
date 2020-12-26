@@ -957,7 +957,41 @@ class Solution {
 
  
 
-##### [튜플](https://programmers.co.kr/learn/courses/30/lessons/64065) :x:
+##### [튜플](https://programmers.co.kr/learn/courses/30/lessons/64065)
+
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(String s) {
+        String[] subSet = s.split("},");
+		for(int i = 0; i < subSet.length; i++) {
+			subSet[i] = subSet[i].replaceAll("[{ || }]", "");
+		}
+        Arrays.sort(subSet, new Comparator<String>(){
+            public int compare(String a, String b){
+                return Integer.compare(a.length(), b.length()); 
+            }
+        });
+        
+        Set<Integer> set = new HashSet<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for (int i = 0; i < subSet.length; i++) {
+			String[] num = subSet[i].split(",");
+			for (String n : num) {
+				if (set.contains(Integer.parseInt(n)))
+					continue;
+				set.add(Integer.parseInt(n));
+                list.add(Integer.parseInt(n));
+			}
+		}
+        
+        
+        return list.stream().mapToInt(i -> i.intValue()).toArray();
+    }
+}
+```
 
 
 

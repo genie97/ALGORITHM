@@ -1515,7 +1515,7 @@ class Solution {
 
 
 
-##### [[3차\] n진수 게임](https://programmers.co.kr/learn/courses/30/lessons/17687) :x:
+##### [[3차\] n진수 게임](https://programmers.co.kr/learn/courses/30/lessons/17687)
 
 ```java
 class Solution {

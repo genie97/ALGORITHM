@@ -1517,6 +1517,41 @@ class Solution {
 
 ##### [[3차\] n진수 게임](https://programmers.co.kr/learn/courses/30/lessons/17687) :x:
 
+```java
+class Solution {
+    public String solution(int n, int t, int m, int p) {
+        String answer = "";
+        StringBuilder line = new StringBuilder();
+        line.append("0");
+        
+        int idx = 0;
+        while(line.length() <= t*m){
+            line.append(convert(idx, n));
+            idx++;
+        }
+      
+        for(int i = 0; i < line.length(); i++){
+            if(i % m == (p-1) % m){
+                answer += line.charAt(i);
+            }
+            if(answer.length() == t) break;
+        }
+        
+        return answer;
+    }
+    public String convert(int num, int n){
+        String result = "";
+        char[] digit ={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+        while(num > 0){
+            int remain = num % n;
+            result = digit[remain] + result;
+            num/=n;
+        }
+        return result;
+    }
+}
+```
+
 
 
 

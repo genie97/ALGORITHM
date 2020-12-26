@@ -1066,7 +1066,31 @@ class Solution {
 
 
 
-##### [이진 변환 반복하기](https://programmers.co.kr/learn/courses/30/lessons/70129) :x:
+##### [이진 변환 반복하기](https://programmers.co.kr/learn/courses/30/lessons/70129)
+
+```java
+class Solution {
+    public int[] solution(String s) {
+        int[] answer = new int[2];
+        
+        int turn = 0;
+        int cnt = 0;
+        while(s.length() != 1 || s.charAt(0) != '1'){
+            int len = s.length();
+            s = s.replaceAll("[0]","");
+            
+            cnt += (len - s.length());
+            
+            s = Integer.toBinaryString(s.length());
+            turn++;
+        } 
+        answer[0] = turn;
+        answer[1] = cnt;
+        
+        return answer;
+    }
+}
+```
 
 
 

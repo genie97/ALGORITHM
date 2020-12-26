@@ -1404,7 +1404,63 @@ class Solution {
 
 
 
-##### [[3차\] 방금그곡](https://programmers.co.kr/learn/courses/30/lessons/17683)​ :x:
+##### [[3차\] 방금그곡](https://programmers.co.kr/learn/courses/30/lessons/17683)​
+
+```java
+class Solution {
+    public String solution(String m, String[] musicinfos) {
+        String answer = "";
+        int play_minutes = Integer.MIN_VALUE;
+		// A# - H
+		// C# - I
+		// D# - J
+		// F# - K
+		// G# - L
+		m = m.replaceAll("[A]#", "H");
+		m = m.replaceAll("[C]#", "I");
+		m = m.replaceAll("[D]#", "J");
+		m = m.replaceAll("[F]#", "K");
+		m = m.replaceAll("[G]#", "L");
+
+		for (String list : musicinfos) {
+			String[] info = list.split(",");
+			String[] time = info[1].split(":");
+			int minutes = Integer.parseInt(time[0]) * 60 + Integer.parseInt(time[1]);
+			time = info[0].split(":");
+			minutes -= (Integer.parseInt(time[0]) * 60 + Integer.parseInt(time[1]));
+			info[3] = info[3].replaceAll("[A]#", "H");
+			info[3] = info[3].replaceAll("[C]#", "I");
+			info[3] = info[3].replaceAll("[D]#", "J");
+			info[3] = info[3].replaceAll("[F]#", "K");
+			info[3] = info[3].replaceAll("[G]#", "L");
+
+			int len = info[3].length();
+
+			int replay = minutes / len;
+			int remain = minutes % len;
+
+			String melody = "";
+
+			for (int i = 0; i < replay; i++) {
+				melody += info[3];
+			}
+
+			for (int i = 0; i < remain; i++) {
+				melody += info[3].charAt(i);
+			}
+                    
+			if (melody.contains(m) && play_minutes < minutes) {
+                play_minutes = minutes;
+				answer = info[2];
+			}
+		}
+		if (answer == "")
+			return "(None)";
+
+		return answer;
+    }
+}
+```
 
 
 

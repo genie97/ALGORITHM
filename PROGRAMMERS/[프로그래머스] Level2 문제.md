@@ -1638,7 +1638,7 @@ class Solution {
 
 
 
-##### [[3차\] 파일명 정렬](https://programmers.co.kr/learn/courses/30/lessons/17686) :x:
+##### [[3차\] 파일명 정렬](https://programmers.co.kr/learn/courses/30/lessons/17686)
 
 ```java
 // 영문 대소문자, 숫자, 공백, 마침표, 빼기, 부호

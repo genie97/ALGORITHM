@@ -1454,7 +1454,40 @@ class Solution {
 
 
 
-##### [오픈채팅방](https://programmers.co.kr/learn/courses/30/lessons/42888) :x:
+##### [오픈채팅방](https://programmers.co.kr/learn/courses/30/lessons/42888)
+
+```java
+import java.util.*;
+
+class Solution {
+    public String[] solution(String[] record) {
+        ArrayList<String> list = new ArrayList<>();
+
+		Map<String, String> map = new HashMap<>();
+
+		for (String s : record) {
+			String[] context = s.split(" ");
+			if (context[0].equals("Enter")) {
+				list.add(context[1] + "님이 들어왔습니다.");
+				map.put(context[1], context[2]);
+			} else if (context[0].equals("Leave")) {
+				list.add(context[1] + "님이 나갔습니다.");
+			} else {
+				map.put(context[1], context[2]);
+			}
+		}
+
+		String[] answer = new String[list.size()];
+
+		for (int i = 0; i < list.size(); i++) {
+			String uid = list.get(i).replaceAll("[님이 들어왔습니다. ||님이 나갔습니다.]", "");
+			answer[i] = list.get(i).replaceAll(uid, map.get(uid));
+		}
+
+		return answer;
+    }
+}
+```
 
 
 

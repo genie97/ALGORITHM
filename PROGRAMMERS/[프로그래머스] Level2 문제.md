@@ -1571,6 +1571,72 @@ class Solution {
 
 ##### [[3차\] 파일명 정렬](https://programmers.co.kr/learn/courses/30/lessons/17686) :x:
 
+```java
+// 영문 대소문자, 숫자, 공백, 마침표, 빼기, 부호
+// HEAD => 숫자가 아닌 문자
+// NUMBER => 숫자는 최대 5글자
+// TAIL=> 은 나머지 부분
+import java.util.*;
+
+class Solution {
+    static class Infos implements Comparable<Infos>{
+        String file_name;
+        String head;
+        String number;
+        int idx;
+        public Infos(String file_name, String head, String number, int idx){
+            this.file_name = file_name;
+            this.head = head;
+            this.number = number;
+            this.idx = idx;
+        }
+        
+        public int compareTo(Infos info){
+            if (this.head.equals(info.head)) {
+                if(Integer.parseInt(this.number) == Integer.parseInt(info.number)){
+                    return Integer.compare(this.idx, info.idx);
+                } else {
+                    return Integer.compare(Integer.parseInt(this.number), Integer.parseInt(info.number));
+                }
+            } else {
+                return this.head.compareTo(info.head);
+            }
+        }
+    }
+    public String[] solution(String[] files) {
+        ArrayList<Infos> list = new ArrayList<>();
+        for(int idx = 0; idx < files.length; idx++){
+            String s = files[idx];
+            
+            int i = 0;
+            for(i = 0;  i < s.length(); i++){
+                if(Character.isDigit(s.charAt(i)))
+                    break;
+            }
+            String head = s.substring(0, i);
+            s = s.substring(i);
+            
+            String number = "";
+            for(i = 0; i < s.length(); i++){
+                if(!Character.isDigit(s.charAt(i))) 
+                    break;
+                 number += s.charAt(i);
+            }
+            
+            list.add(new Infos(head+s, head.toLowerCase(), number, idx));
+        }
+        
+        Collections.sort(list);
+        String[] answer = new String[list.size()];
+        for(int i = 0; i < list.size(); i++){
+            answer[i] = list.get(i).file_name;
+        }
+        
+        return answer;
+    }
+}
+```
+
 
 
 ##### [[3차\] n진수 게임](https://programmers.co.kr/learn/courses/30/lessons/17687)

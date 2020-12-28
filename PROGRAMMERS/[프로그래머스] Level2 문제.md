@@ -264,7 +264,7 @@ class Solution {
 }
 ```
 
- ![](.\img\formula.jpg)
+ ![](./img/formula.jpg)
 
 ##### [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12899) :x:
 

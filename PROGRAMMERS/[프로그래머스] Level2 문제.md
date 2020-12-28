@@ -247,7 +247,21 @@ class Solution {
 
 
 
-##### [멀쩡한 사각형](https://programmers.co.kr/learn/courses/30/lessons/62048) :x:
+##### [멀쩡한 사각형](https://programmers.co.kr/learn/courses/30/lessons/62048) :star:
+
+```java
+class Solution {
+    public long gcd(long a, long b){
+        if(a % b == 0) return b;
+        else return gcd(b, a % b);
+    }
+    public long solution(long w, long h) {
+        long total = w * h;
+        long broke = w + h - gcd(w, h);
+        return total - broke;
+    }
+}
+```
 
 
 

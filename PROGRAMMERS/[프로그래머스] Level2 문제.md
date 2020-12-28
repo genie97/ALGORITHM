@@ -264,7 +264,7 @@ class Solution {
 }
 ```
 
- <img src="./img/formula.jpg" width="200" height="250">
+ <img src="./img/formula.jpg" width="500" height="550">
 
 ##### [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12899) :x:
 

@@ -1166,7 +1166,28 @@ class Solution {
 
 
 
-##### [최솟값 만들기](https://programmers.co.kr/learn/courses/30/lessons/12941) :x:
+##### [최솟값 만들기](https://programmers.co.kr/learn/courses/30/lessons/12941)
+
+```java
+import java.util.*;
+
+class Solution
+{
+    public int solution(int []A, int []B)
+    {
+        int answer = 0;
+        Arrays.sort(A);
+        Arrays.sort(B);
+        int len = Math.min(A.length, B.length);
+        
+        for(int i = 0; i < len; i++){
+            answer += (A[i] * B[len-1-i]);
+        }
+        
+        return answer;
+    }
+}
+```
 
 
 

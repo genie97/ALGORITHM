@@ -1168,7 +1168,7 @@ class Solution {
 
 ##### [최솟값 만들기](https://programmers.co.kr/learn/courses/30/lessons/12941)
 
-```java
+```
 import java.util.*;
 
 class Solution
@@ -1294,24 +1294,28 @@ class Solution {
 
 
 
-##### [짝지어 제거하기](https://programmers.co.kr/learn/courses/30/lessons/12973)
+##### [짝지어 제거하기](https://programmers.co.kr/learn/courses/30/lessons/12973):star:
 
 ```java
+// 스택을 사용하자
+import java.util.*;
+
 class Solution
 {
     public int solution(String s)
     {
-        for (int i = 0; i < s.length() - 1;) {
-			if (s.charAt(i) == s.charAt(i + 1)) {
-				String f = s.substring(0, i);
-				String b = s.substring(i + 2);
-				s = f + b;
-				i = 0;
-				continue;
-			}
-			i++;
+        Stack<Character> st = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+			if(st.isEmpty()){
+                st.add(s.charAt(i));
+            } else if(s.charAt(i) == st.peek()){
+                st.pop();
+            } else {
+                st.add(s.charAt(i));
+            }
 		}
-		if (s.length() == 0)
+		if (st.isEmpty())
 			return 1;
 		else
 			return 0;

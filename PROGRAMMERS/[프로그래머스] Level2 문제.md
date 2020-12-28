@@ -250,6 +250,7 @@ class Solution {
 ##### [멀쩡한 사각형](https://programmers.co.kr/learn/courses/30/lessons/62048) :star:
 
 ```java
+// w와 h가 1억 이하의 자연수이기 때문에 long으로 변환하는 것이 필요하다
 class Solution {
     public long gcd(long a, long b){
         if(a % b == 0) return b;
@@ -263,7 +264,7 @@ class Solution {
 }
 ```
 
-
+ ![](..\ALGORITHM\PROGRAMMERS\img\formula.jpg)
 
 ##### [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12899) :x:
 

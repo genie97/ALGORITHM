@@ -56,10 +56,12 @@ public class BOJ14442_벽부수고이동하기2 {
 					continue;
 				if (map[nx][ny] == 1) { // 벽이라면 벽 부순 횟수 체크하고 이동
 					if (b < K) {
+						if (visit[nx][ny][b + 1] == 1) // 시간초과 해결 (벽을 부수는 경우일때, 이미 방문 지점이면 skip해서 시간을 더 줄인다!)
+							continue;
 						visit[nx][ny][b + 1] = 1;
 						q.add(new int[] { nx, ny, b + 1, m + 1 });
 					}
-				}else {
+				} else {
 					visit[nx][ny][b] = 1;
 					q.add(new int[] { nx, ny, b, m + 1 });
 				}

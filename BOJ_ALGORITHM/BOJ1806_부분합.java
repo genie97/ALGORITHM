@@ -26,24 +26,16 @@ public class BOJ1806_부분합 {
 		int sum = 0;
 		int ans = Integer.MAX_VALUE;
 
-		while (true) {
-			if (start == end && end == N) {
-				break;
-			}
-			if (sum < S && end + 1 <= N) {
-				sum += arr[end];
-				end++;
-			} else if (sum >= S || end == N) {
-				// 앞쪽 포인터를 옮기기 전에 합이 S이상이면 길이 확인하기
+		while (start < N) {
+			if (sum >= S || end == N) {
 				if (sum >= S) {
 					ans = Math.min(ans, end - start);
 				}
-				// 밖의 조건문에서 확인할 경우, 제일 마지막을 확인 못할 수 있으므로 
-				// 안쪽에서 다시 확인하기
-				if (start + 1 <= N) {
-					sum -= arr[start];
-					start++;
-				}
+				sum -= arr[start];
+				start++;
+			} else {
+				sum += arr[end];
+				end++;
 			}
 		}
 

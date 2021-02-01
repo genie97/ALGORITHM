@@ -19,7 +19,7 @@ public class BOJ1644_소수의연속합 {
 				prime[j] = true;
 			}
 		}
-		
+
 		// 2. 소수 리스트를 확인한다
 		ArrayList<Integer> prime_list = new ArrayList<>();
 		for (int i = 2; i <= N; i++) {
@@ -33,21 +33,16 @@ public class BOJ1644_소수의연속합 {
 		int end = 0;
 		int sum = 0;
 		int ans = 0;
-		while (true) {
-			if (start == end && end == prime_list.size())
-				break;
-
-			if (sum < N && end + 1 <= prime_list.size()) {
-				sum += prime_list.get(end);
-				end++;
-			} else if (sum >= N || start + 1 <= prime_list.size()) {
+		while (start < prime_list.size()) {
+			if (sum >= N || end == prime_list.size()) {
 				if (sum == N) {
 					ans++;
 				}
-				if (start + 1 <= prime_list.size()) {
-					sum -= prime_list.get(start);
-					start++;
-				}
+				sum -= prime_list.get(start);
+				start++;
+			} else if (sum >= N || start + 1 <= prime_list.size()) {
+				sum += prime_list.get(end);
+				end++;
 			}
 		}
 		System.out.println(ans);

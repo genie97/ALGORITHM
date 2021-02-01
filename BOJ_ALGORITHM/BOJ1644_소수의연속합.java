@@ -40,7 +40,7 @@ public class BOJ1644_소수의연속합 {
 				}
 				sum -= prime_list.get(start);
 				start++;
-			} else if (sum >= N || start + 1 <= prime_list.size()) {
+			} else {
 				sum += prime_list.get(end);
 				end++;
 			}

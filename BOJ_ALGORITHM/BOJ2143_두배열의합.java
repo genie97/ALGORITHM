@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class BOJ2143_두배열의합_투포인터 {
+public class BOJ2143_두배열의합 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine()); // 목표 합
@@ -56,7 +56,7 @@ public class BOJ2143_두배열의합_투포인터 {
 		Collections.sort(a_group);
 		Collections.sort(b_group);
 
-		// 4. 투포인터로 확인한다 (a는 작은수, b는 큰수부터 확인하자)
+		// 4. 투포인터로 확인한다 (a는 작은수, b는 큰수부터 확인하자) 
 		int a_size = a_group.size();
 		int b_size = b_group.size();
 
@@ -70,6 +70,7 @@ public class BOJ2143_두배열의합_투포인터 {
 			long a_cnt = 0;
 			long b_cnt = 0;
 			if (a_num + b_num == T) {
+				// => c++에서 upper_bound와 lower_bound를 사용하는 것과 같음
 				// T인경우, 같은 숫자가 있는지 확인하기 위해 a_num값이 더 있는지 확인
 				while (ap < a_size && a_group.get(ap) == a_num) {
 					a_cnt++;

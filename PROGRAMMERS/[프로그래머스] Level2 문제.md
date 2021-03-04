@@ -266,7 +266,31 @@ class Solution {
 
  <img src="./img/formula.jpg" width="500" height="550">
 
-##### [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12899) :x:
+##### [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12899) 
+
+```java
+// 규칙1. 나머지가 1인 경우는 1로 표기
+// 규칙2. 나머지가 2인 경우는 2로 표기
+// 규칙3. 나머지가 0인 경우는 4로 표기
+//       단, n을 n/3-1로 변경할 것!
+import java.util.*;
+
+class Solution {
+    public String solution(int n) {
+        StringBuilder sb = new StringBuilder();
+        while(n!=0){
+            int r = n % 3;
+            n /= 3;
+            if(r == 0){
+                r = 4;
+                n -= 1;
+            }
+            sb.append(r);            
+        }
+        return sb.reverse().toString();
+    }
+}
+```
 
 
 

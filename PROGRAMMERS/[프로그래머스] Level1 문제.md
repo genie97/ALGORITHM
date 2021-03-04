@@ -104,6 +104,51 @@ class Solution {
 
 
 
+**[신규 아이디 추천](https://programmers.co.kr/learn/courses/30/lessons/72410)**
+
+- 정규식으로 문자열 처리하는 기본문제
+
+```java
+class Solution {
+    public String solution(String new_id) {
+        // 1단계: 모든 대문자를 소문자로
+        new_id = new_id.toLowerCase();
+       
+        // 2단계: 알파벳 소문자, 숫자, -, _, . 제외한 모든 문자 제거
+        // [^문자] 문자를 제외한 나머지
+        new_id = new_id.replaceAll("[^a-z0-9-_.]","");
+     
+        // 3단계: 마침표가 2번 이상 연속된 부분을 .로 치환
+        // []+ 앞의 문자가 1번 이상
+        new_id = new_id.replaceAll("[.]+",".");
+        
+        // 4단계: 처음 .이나 끝에 . 제거하기
+        // ^[.] 시작 [.]$ 끝 or -> |
+        new_id = new_id.replaceAll("^[.]|[.]$","");
+       
+        // 5단계: 빈 문자열이라면 a를 대입
+        // 시작하는 문자와 끝나는 문자 사이가 모두 비었다 => ^$로 빈문자열 확인 가능
+        new_id = new_id.replaceAll("^$","a");
+        
+        // 6단계: new_id의 길이가 16자 이상이라면 첫 15개를 제외한 나머지를 제거한다
+        if(new_id.length() >= 16){
+            new_id = new_id.substring(0,15);
+            // 만약 제거 후 마침표 (.)가 끝이면 제거하기
+            new_id = new_id.replaceAll("[.]$","");
+        } 
+            
+        // 7단계: 아이디의 길이가 2자 이하라면 마지막 문자를 3이 될때까지 반복
+        char ch = new_id.charAt(new_id.length()-1);
+        while(new_id.length() < 3){
+            new_id += ch;
+        }
+        return new_id;
+    }
+}
+```
+
+
+
 ##### [모의고사](https://programmers.co.kr/learn/courses/30/lessons/42840)
 
 ```java

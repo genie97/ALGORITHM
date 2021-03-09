@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 // 크기가 n인 삼각형
 // 첫번째 줄 숫자는 항상 1
 // 두번째 줄부터는 자신의 왼쪽 + 오른쪽 위 숫자의 합
+// nCr = n-1Cr-1 + n-1Cr
 
 public class SWEA2005_D2_파스칼의삼각형 {
 	public static void main(String[] args) throws IOException {

@@ -23,6 +23,6 @@ int main() {
 			k += 2;
 			sum += (map[mid][i] + map[mid][N - 1 - i]);
 		}
-		printf("#%d %d", tc, sum += map[mid][mid]);
+		printf("#%d %d\n", tc, sum += map[mid][mid]);
 	}
 }
